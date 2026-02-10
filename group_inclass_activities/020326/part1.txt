@@ -1,0 +1,17 @@
+Database:
+    historical purposes
+    store policy info
+    policy_id and bundle name can identify the user and bundles
+
+Backend:
+    Calculate quote based on above conditions
+    process any new changes
+    communicate with front and backends
+    communicate with outside to view info like crime rate
+    Maybe use machine learning to help calculate info
+
+Frontend:
+    Enter user input
+    Display Informations
+    View History
+    Able to change parts

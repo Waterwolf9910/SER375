@@ -1,0 +1,10 @@
+{
+    "recommendations": [
+        "ms-dotnettools.csdevkit",
+        "ms-dotnettools.csharp",
+        "naumovs.color-highlight",
+        "editorconfig.editorconfig",
+        "geequlim.godot-tools",
+        "qwtel.sqlite-viewer"
+    ]
+}

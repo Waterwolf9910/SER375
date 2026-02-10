@@ -1,0 +1,28 @@
+{
+    // false, "homeauto", ...
+    "bundle": "",
+    "type": "",
+    // can be used to grab history, can be null
+    "policy_id": "",
+    // customer name
+    "name": "", 
+    // how much can be lost in each sections (would be a number if not renters)
+    "possible_loss": {
+        "tech": 0,
+        "furnature": 0
+        // ...
+    },
+    // able to check area
+    "zip_code": "",
+    // for responsibility
+    "age": "",
+    "income": 0,
+    "employment": false,
+    "status": {
+        "married": false,
+        "divcore_or_widowed": false,
+        "children": false,
+        "crime_record": false,
+        "health": []
+    }
+}
