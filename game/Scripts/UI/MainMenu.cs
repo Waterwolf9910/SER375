@@ -11,7 +11,7 @@ public partial class MainMenu : PanelContainer {
     }
 
     public void OnStartPressed() {
-        this.GetTree().ChangeSceneToFile("res://Scenes/Hello.tscn");
+        this.GetTree().ChangeSceneToFile("res://Scenes/Ryans_Test_Scene.tscn");
     }
 
     public void OnSavesPressed() {
