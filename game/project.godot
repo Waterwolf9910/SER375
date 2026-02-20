@@ -26,6 +26,15 @@ window/size/window_height_override=480
 
 project/assembly_name="SER375 Game"
 
+[file_customization]
+
+folder_colors={
+"res://Assets/": "pink",
+"res://Resources/": "purple",
+"res://Scenes/": "teal",
+"res://Scripts/": "yellow"
+}
+
 [input]
 
 up={

@@ -1,0 +1,26 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch Game",
+            "type": "coreclr",
+            "program": "godot-mono",
+            "args": "--path ${workspaceFolder} --debug-collisions --debug-paths --debug-navigation --debug-avoidance --remote-debug tcp://127.0.0.1 --no-header",
+            "request": "launch",
+            "justMyCode": true,
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Launch Ryan's Scene",
+            "type": "coreclr",
+            "program": "godot-mono",
+            "args": "--path ${workspaceFolder} --debug-collisions --debug-paths --debug-navigation --debug-avoidance --remote-debug tcp://127.0.0.1 --no-header --scene res://Scenes/Ryans_Test_Scene.tscn",
+            "request": "launch",
+            "justMyCode": true,
+            "console": "integratedTerminal"
+        }
+    ]
+}

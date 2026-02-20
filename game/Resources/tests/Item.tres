@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://drrws8a0n7f5c"]
+
+[ext_resource type="Script" uid="uid://cl2ynxrkeqfxt" path="res://Scripts/Resources/Items/Item.cs" id="1_elhob"]
+
+[resource]
+script = ExtResource("1_elhob")
+id = "item"
+name = "Item"
+description = "Hello World!"
+scripts = Array[Script]([null])

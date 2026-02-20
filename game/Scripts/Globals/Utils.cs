@@ -2,7 +2,7 @@
 
 using Godot;
 
-public static class Utils {
+public static partial class Utils {
     
     public static void QuitGame(this Node node) {
         node.GetTree().Root.PropagateNotification((int) Node.NotificationWMCloseRequest);
@@ -10,4 +10,5 @@ public static class Utils {
             node.GetTree().Quit();
         }).CallDeferred();
     }
+
 }

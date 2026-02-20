@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Card" format=3 uid="uid://16601hohocj5"]
+
+[ext_resource type="Script" uid="uid://cb5fejxbatbuj" path="res://Scripts/Resources/Card.cs" id="1_8pcf5"]
+[ext_resource type="Script" uid="uid://4orihxi2f57e" path="res://Scripts/Gameplay/CardActions/FireAttack.cs" id="1_fhmnv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wt8un"]
+
+[resource]
+script = ExtResource("1_8pcf5")
+effects = Array[Script]([ExtResource("1_fhmnv")])
+frames = SubResource("SpriteFrames_wt8un")

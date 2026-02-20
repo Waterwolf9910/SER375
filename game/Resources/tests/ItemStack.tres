@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemStack" format=3 uid="uid://hguc6vf3kppw"]
+
+[ext_resource type="Script" uid="uid://n6lw2sigj3r4" path="res://Scripts/Resources/Items/ItemStack.cs" id="1_i1emo"]
+[ext_resource type="Script" uid="uid://cl2ynxrkeqfxt" path="res://Scripts/Resources/Items/Item.cs" id="1_ljmrq"]
+
+[sub_resource type="Resource" id="Resource_tx3sh"]
+script = ExtResource("1_ljmrq")
+metadata/_custom_type_script = "uid://cl2ynxrkeqfxt"
+
+[resource]
+script = ExtResource("1_i1emo")
+item = SubResource("Resource_tx3sh")

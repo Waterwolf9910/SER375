@@ -1,11 +1,9 @@
 using Godot;
 using System;
 
-public partial class MainMenu : PanelContainer
-{
+public partial class MainMenu : PanelContainer {
     // Called when the node enters the scene tree for the first time.
-    public override void _Ready()
-    {
+    public override void _Ready() {
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -17,11 +15,11 @@ public partial class MainMenu : PanelContainer
     }
 
     public void OnSavesPressed() {
-        
+
     }
 
     public void OnSettingsPressed() {
-        
+
     }
 
     public void OnExitPressed() {
