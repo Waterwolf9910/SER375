@@ -40,18 +40,21 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = SubResource("Theme_7yr4w")
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
+theme_override_constants/margin_left = 400
+theme_override_constants/margin_top = 400
+theme_override_constants/margin_right = 400
+theme_override_constants/margin_bottom = 400
 
 [node name="BoxContainer" type="BoxContainer" parent="CanvasLayer/Control/MainMenu/PanelContainer/MarginContainer" unique_id=678020512]
 layout_mode = 2
+size_flags_stretch_ratio = 0.0
+theme_override_constants/separation = 13
 alignment = 1
 vertical = true
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/MainMenu/PanelContainer/MarginContainer/BoxContainer" unique_id=1562316816]
 layout_mode = 2
+theme_override_font_sizes/font_size = 100
 text = "{Insert Game Name Here}!!!!!"
 label_settings = SubResource("LabelSettings_7yr4w")
 horizontal_alignment = 1
