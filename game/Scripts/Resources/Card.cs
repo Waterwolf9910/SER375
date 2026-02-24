@@ -49,6 +49,9 @@ public partial class Card : Resource {
     [Export]
     public SpriteFrames frames {get; private set;} = new SpriteFrames();
 
+    [Export]
+    public Texture2D border {get; set;} = new ();
+
     // Although we have script effects above, we need to have the cards basic attack and defense additions, expecally for other people to make custom cards without scripting
     [Export]
     public double attack {get; private set;} = 0;
