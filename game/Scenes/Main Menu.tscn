@@ -11,7 +11,18 @@ font_size = 24
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=341261646]
 
-[node name="MainMenu" type="PanelContainer" parent="CanvasLayer" unique_id=2027907483]
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1349904673]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MainMenu" type="PanelContainer" parent="CanvasLayer/Control" unique_id=2027907483]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -19,12 +30,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_totuj")
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/MainMenu" unique_id=536695946]
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control/MainMenu" unique_id=536695946]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MainMenu/PanelContainer" unique_id=2122688116]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/MainMenu/PanelContainer" unique_id=2122688116]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -34,45 +45,45 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="BoxContainer" type="BoxContainer" parent="CanvasLayer/MainMenu/PanelContainer/MarginContainer" unique_id=678020512]
+[node name="BoxContainer" type="BoxContainer" parent="CanvasLayer/Control/MainMenu/PanelContainer/MarginContainer" unique_id=678020512]
 layout_mode = 2
 alignment = 1
 vertical = true
 
-[node name="Label" type="Label" parent="CanvasLayer/MainMenu/PanelContainer/MarginContainer/BoxContainer" unique_id=1562316816]
+[node name="Label" type="Label" parent="CanvasLayer/Control/MainMenu/PanelContainer/MarginContainer/BoxContainer" unique_id=1562316816]
 layout_mode = 2
 text = "{Insert Game Name Here}!!!!!"
 label_settings = SubResource("LabelSettings_7yr4w")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="CanvasLayer/MainMenu/PanelContainer/MarginContainer/BoxContainer" unique_id=1718971416]
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/Control/MainMenu/PanelContainer/MarginContainer/BoxContainer" unique_id=1718971416]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 15
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MainMenu/PanelContainer/MarginContainer/BoxContainer" unique_id=762509405]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/MainMenu/PanelContainer/MarginContainer/BoxContainer" unique_id=762509405]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Start" type="Button" parent="CanvasLayer/MainMenu/PanelContainer/MarginContainer/BoxContainer/VBoxContainer" unique_id=65450887]
+[node name="Start" type="Button" parent="CanvasLayer/Control/MainMenu/PanelContainer/MarginContainer/BoxContainer/VBoxContainer" unique_id=65450887]
 layout_mode = 2
 text = "Start"
 
-[node name="Saves" type="Button" parent="CanvasLayer/MainMenu/PanelContainer/MarginContainer/BoxContainer/VBoxContainer" unique_id=2058496746]
+[node name="Saves" type="Button" parent="CanvasLayer/Control/MainMenu/PanelContainer/MarginContainer/BoxContainer/VBoxContainer" unique_id=2058496746]
 layout_mode = 2
 text = "Saves"
 
-[node name="Settings" type="Button" parent="CanvasLayer/MainMenu/PanelContainer/MarginContainer/BoxContainer/VBoxContainer" unique_id=1330985954]
+[node name="Settings" type="Button" parent="CanvasLayer/Control/MainMenu/PanelContainer/MarginContainer/BoxContainer/VBoxContainer" unique_id=1330985954]
 layout_mode = 2
 text = "Settings"
 
-[node name="Exit" type="Button" parent="CanvasLayer/MainMenu/PanelContainer/MarginContainer/BoxContainer/VBoxContainer" unique_id=953075876]
+[node name="Exit" type="Button" parent="CanvasLayer/Control/MainMenu/PanelContainer/MarginContainer/BoxContainer/VBoxContainer" unique_id=953075876]
 layout_mode = 2
 text = "Exit"
 
-[connection signal="pressed" from="CanvasLayer/MainMenu/PanelContainer/MarginContainer/BoxContainer/VBoxContainer/Start" to="CanvasLayer/MainMenu" method="OnStartPressed"]
-[connection signal="pressed" from="CanvasLayer/MainMenu/PanelContainer/MarginContainer/BoxContainer/VBoxContainer/Saves" to="CanvasLayer/MainMenu" method="OnSavesPressed"]
-[connection signal="pressed" from="CanvasLayer/MainMenu/PanelContainer/MarginContainer/BoxContainer/VBoxContainer/Settings" to="CanvasLayer/MainMenu" method="OnSettingsPressed"]
-[connection signal="pressed" from="CanvasLayer/MainMenu/PanelContainer/MarginContainer/BoxContainer/VBoxContainer/Exit" to="CanvasLayer/MainMenu" method="OnExitPressed"]
+[connection signal="pressed" from="CanvasLayer/Control/MainMenu/PanelContainer/MarginContainer/BoxContainer/VBoxContainer/Start" to="CanvasLayer/Control/MainMenu" method="OnStartPressed"]
+[connection signal="pressed" from="CanvasLayer/Control/MainMenu/PanelContainer/MarginContainer/BoxContainer/VBoxContainer/Saves" to="CanvasLayer/Control/MainMenu" method="OnSavesPressed"]
+[connection signal="pressed" from="CanvasLayer/Control/MainMenu/PanelContainer/MarginContainer/BoxContainer/VBoxContainer/Settings" to="CanvasLayer/Control/MainMenu" method="OnSettingsPressed"]
+[connection signal="pressed" from="CanvasLayer/Control/MainMenu/PanelContainer/MarginContainer/BoxContainer/VBoxContainer/Exit" to="CanvasLayer/Control/MainMenu" method="OnExitPressed"]
