@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "sourceMap": true,
+        "target": "es6",
+        "outDir": "./out",
+        "moduleResolution": "nodenext",
+        "module": "nodenext",
+        "rootDir": "./src"
+    },
+    "include": ["./src/**/*"]
+}
