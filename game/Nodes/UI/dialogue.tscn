@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://c8diu7m1q1jm6"]
+
+[ext_resource type="Texture2D" uid="uid://1y74l8y0wno7" path="res://Assets/Portraits/portraittest.png" id="1_ciyyn"]
+
+[node name="Node2D" type="Node2D" unique_id=1784703552]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1774784529]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1391552626]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1110.0
+offset_bottom = 534.0
+
+[node name="NameBG" type="ColorRect" parent="CanvasLayer/Control" unique_id=333860662]
+layout_mode = 0
+offset_left = 315.0
+offset_top = 418.0
+offset_right = 515.0
+offset_bottom = 533.0
+color = Color(0.6766525, 0.58388287, 0.34869835, 1)
+
+[node name="CharacterName" type="Label" parent="CanvasLayer/Control/NameBG" unique_id=908294049]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 28.0
+offset_right = 106.0
+offset_bottom = 75.0
+theme_override_colors/font_color = Color(0.34399655, 0.027235195, 0.052932613, 1)
+theme_override_font_sizes/font_size = 48
+text = "Iris"
+
+[node name="TextBG" type="ColorRect" parent="CanvasLayer/Control" unique_id=134582187]
+layout_mode = 0
+offset_left = -2.0
+offset_top = 532.0
+offset_right = 710.0
+offset_bottom = 672.0
+
+[node name="Dialogue" type="Label" parent="CanvasLayer/Control/TextBG" unique_id=424358481]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 11.0
+offset_right = 51.0
+offset_bottom = 34.0
+theme_override_colors/font_color = Color(0.031498976, 0.013450078, 0.002979292, 1)
+theme_override_font_sizes/font_size = 21
+text = "Text Here"
+
+[node name="Portrait" type="Sprite2D" parent="CanvasLayer/Control" unique_id=126556694]
+position = Vector2(158.99998, 380)
+scale = Vector2(1.3095717, 1.4066986)
+texture = ExtResource("1_ciyyn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control" unique_id=2010427542]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
