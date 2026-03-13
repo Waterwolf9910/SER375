@@ -31,6 +31,8 @@ project/assembly_name="SER375 Game"
 folder_colors={
 "res://Assets/": "pink",
 "res://Resources/": "purple",
+"res://Resources/Cards/": "gray",
+"res://Resources/Cards/Pride/": "red",
 "res://Scenes/": "teal",
 "res://Scripts/": "yellow"
 }
@@ -68,5 +70,6 @@ right={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="mobile"
