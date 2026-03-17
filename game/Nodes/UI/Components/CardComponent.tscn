@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://42hw7cwptft4"]
+
+[ext_resource type="Script" uid="uid://dmk4lo45ku2f5" path="res://Scripts/UI/CardComponent.cs" id="1_l6syy"]
+[ext_resource type="Resource" uid="uid://b0xkkicytomha" path="res://Resources/Cards/Pride/DragoJr.tres" id="2_bckdt"]
+[ext_resource type="Texture2D" uid="uid://uc3ktbbdgu37" path="res://Assets/Cards/Card Template Pride.png" id="3_m8hbk"]
+[ext_resource type="Texture2D" uid="uid://du114h75xi6d3" path="res://Assets/Cards/Card Name_ Prideful Hatchling - Hatchling Only - Card Type_ Pride.png" id="4_oyiqu"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rewdt"]
+texture = ExtResource("3_m8hbk")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_flf60"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_oyiqu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="CardComponent" type="Control" unique_id=384869195]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_l6syy")
+card = ExtResource("2_bckdt")
+
+[node name="Panel" type="Panel" parent="." unique_id=236872867]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 55.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_rewdt")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1438107950]
+visible = false
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 37.0
+offset_bottom = 28.0
+texture = ExtResource("4_oyiqu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=25499268]
+position = Vector2(20, 15.5)
+scale = Vector2(1.8888888, 1.5625)
+sprite_frames = SubResource("SpriteFrames_flf60")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1130321103]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 28.0
+offset_right = 37.0
+offset_bottom = 52.0
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true

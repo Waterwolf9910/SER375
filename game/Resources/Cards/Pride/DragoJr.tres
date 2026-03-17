@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Card" format=3 uid="uid://b0xkkicytomha"]
+
+[ext_resource type="Texture2D" uid="uid://uc3ktbbdgu37" path="res://Assets/Cards/Card Template Pride.png" id="1_pgilo"]
+[ext_resource type="Script" uid="uid://cb5fejxbatbuj" path="res://Scripts/Resources/Card.cs" id="1_senq0"]
+[ext_resource type="Texture2D" uid="uid://du114h75xi6d3" path="res://Assets/Cards/Card Name_ Prideful Hatchling - Hatchling Only - Card Type_ Pride.png" id="2_tkftn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d80vx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_tkftn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_senq0")
+id = "drago_jr."
+name = "Drago Jr."
+description = "Boi"
+frames = SubResource("SpriteFrames_d80vx")
+border = ExtResource("1_pgilo")
+metadata/_custom_type_script = "uid://cb5fejxbatbuj"
