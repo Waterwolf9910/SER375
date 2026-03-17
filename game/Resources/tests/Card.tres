@@ -1,10 +1,16 @@
 [gd_resource type="Resource" script_class="Card" format=3 uid="uid://dbx6hmuynwtvl"]
 
 [ext_resource type="Script" uid="uid://cb5fejxbatbuj" path="res://Scripts/Resources/Card.cs" id="1_8pcf5"]
-[ext_resource type="Script" uid="uid://4orihxi2f57e" path="res://Scripts/Gameplay/CardActions/FireAttack.cs" id="1_fhmnv"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_wt8un"]
+[sub_resource type="Texture2D" id="Texture2D_encs4"]
+resource_local_to_scene = false
+resource_name = ""
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y8kma"]
 
 [resource]
 script = ExtResource("1_8pcf5")
-effects = Array[Script]([ExtResource("1_fhmnv")])
+id = "card"
+name = "Card"
+frames = SubResource("SpriteFrames_y8kma")
+border = SubResource("Texture2D_encs4")

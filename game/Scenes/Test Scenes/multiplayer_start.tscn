@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://d1tl4npvkc48k"]
+
+[ext_resource type="Script" uid="uid://bojss0cpbgamt" path="res://Scripts/SceneSpecific/TestScenes/MultiplayerStart.cs" id="1_nyjkk"]
+
+[node name="MultiplayerTest" type="Node" unique_id=1377772398]
+script = ExtResource("1_nyjkk")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=750249930]
+
+[node name="MultiplayerMenu" type="Control" parent="CanvasLayer" unique_id=1031335444]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/MultiplayerMenu" unique_id=1371814499]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MultiplayerMenu/PanelContainer" unique_id=1384140676]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MultiplayerMenu/PanelContainer/MarginContainer" unique_id=1982818273]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="CanvasLayer/MultiplayerMenu/PanelContainer/MarginContainer/VBoxContainer" unique_id=1468355123]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Multiplayer Test"
+
+[node name="Create" type="Button" parent="CanvasLayer/MultiplayerMenu/PanelContainer/MarginContainer/VBoxContainer" unique_id=24504883]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 24
+text = "Create Server"
+
+[node name="Join" type="Button" parent="CanvasLayer/MultiplayerMenu/PanelContainer/MarginContainer/VBoxContainer" unique_id=889787721]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 24
+text = "Join Server"
+
+[node name="SceneFolder" type="Node" parent="." unique_id=1034697565]
+unique_name_in_owner = true
+
+[node name="Spawner" type="MultiplayerSpawner" parent="SceneFolder" unique_id=1094459352]
+unique_name_in_owner = true
+_spawnable_scenes = PackedStringArray("")
+
+[connection signal="pressed" from="CanvasLayer/MultiplayerMenu/PanelContainer/MarginContainer/VBoxContainer/Create" to="." method="CreateServer"]
+[connection signal="pressed" from="CanvasLayer/MultiplayerMenu/PanelContainer/MarginContainer/VBoxContainer/Join" to="." method="JoinServer"]
