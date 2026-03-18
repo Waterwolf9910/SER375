@@ -8,6 +8,8 @@ public partial class Player : CharacterBody2D, IEntityHolder {
     [Export]
     public float Speed = 300.0f;
     // public const float JumpVelocity = -400.0f;
+    [Export]
+    private Camera2D camera;
 
     public override void _PhysicsProcess(double delta) {
         Vector2 velocity = Velocity;
@@ -44,6 +46,9 @@ public partial class Player : CharacterBody2D, IEntityHolder {
         base._Ready();
         var label = this.GetNode<Label>("%Label");
         label.Text = Name;
+        if (this.IsMultiplayerAuthority()) {
+            this.camera.MakeCurrent();
+        }
     }
 
     public override void _EnterTree() {

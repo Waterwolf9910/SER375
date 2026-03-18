@@ -2,8 +2,11 @@
 
 [ext_resource type="Script" uid="uid://bojss0cpbgamt" path="res://Scripts/SceneSpecific/TestScenes/MultiplayerStart.cs" id="1_nyjkk"]
 
-[node name="MultiplayerTest" type="Node" unique_id=1377772398]
+[node name="MultiplayerTest" type="Node" unique_id=1377772398 node_paths=PackedStringArray("menu", "scene_folder", "spawner")]
 script = ExtResource("1_nyjkk")
+menu = NodePath("CanvasLayer/MultiplayerMenu")
+scene_folder = NodePath("SceneFolder")
+spawner = NodePath("Spawner")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=750249930]
 
@@ -57,12 +60,11 @@ size_flags_vertical = 4
 theme_override_font_sizes/font_size = 24
 text = "Join Server"
 
-[node name="SceneFolder" type="Node" parent="." unique_id=1034697565]
+[node name="Spawner" type="MultiplayerSpawner" parent="." unique_id=1094459352]
 unique_name_in_owner = true
 
-[node name="Spawner" type="MultiplayerSpawner" parent="SceneFolder" unique_id=1094459352]
+[node name="SceneFolder" type="Node" parent="." unique_id=1034697565]
 unique_name_in_owner = true
-_spawnable_scenes = PackedStringArray("")
 
 [connection signal="pressed" from="CanvasLayer/MultiplayerMenu/PanelContainer/MarginContainer/VBoxContainer/Create" to="." method="CreateServer"]
 [connection signal="pressed" from="CanvasLayer/MultiplayerMenu/PanelContainer/MarginContainer/VBoxContainer/Join" to="." method="JoinServer"]

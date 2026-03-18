@@ -44,7 +44,3 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Hallo!"
-
-[node name="Spawner" type="MultiplayerSpawner" parent="." unique_id=192478668]
-unique_name_in_owner = true
-spawn_path = NodePath("..")

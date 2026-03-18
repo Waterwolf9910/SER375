@@ -5,16 +5,18 @@ public partial class MultiplayerStart : Node {
 
     private PackedScene world {get;} = ResourceLoader.Load<PackedScene>("res://Scenes/Test Scenes/ryan.tscn");
     private PackedScene player_scene {get;} = ResourceLoader.Load<PackedScene>("res://Nodes/Entities/test_player.tscn");
+    #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
+    [Export]
     private Control menu;
+    [Export]
     private Node scene_folder;
     private Node current_scene;
+    [Export]
     private MultiplayerSpawner spawner;
+    #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready() {
-        this.menu = this.GetNode<Control>("%MultiplayerMenu");
-        this.spawner = this.GetNode<MultiplayerSpawner>("%Spawner");
-        this.scene_folder = this.GetNode("%SceneFolder");
         this.spawner.AddSpawnableScene(this.player_scene.ResourcePath);
 
         MultiplayerManager.INSTANCE.server_created += () => {
@@ -65,8 +67,6 @@ public partial class MultiplayerStart : Node {
         }
         var new_player = player_scene.Instantiate<Player>();
         new_player.Name = $"Player {id}";
-        // this.GetNode(spawner.SpawnPath)
-        this.current_scene.CallDeferred("add_child", new_player);
-        // this.AddChild(new_player, true);
+        this.current_scene.AddChild(new_player, true);
     }
 }

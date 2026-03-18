@@ -17,9 +17,10 @@ properties/2/path = NodePath(".:rotation")
 properties/2/spawn = true
 properties/2/replication_mode = 1
 
-[node name="TestPlayer" type="CharacterBody2D" unique_id=1696976314]
+[node name="TestPlayer" type="CharacterBody2D" unique_id=1696976314 node_paths=PackedStringArray("camera")]
 collision_mask = 0
 script = ExtResource("1_by6q7")
+camera = NodePath("PlayerCamera")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1848854432]
 texture = ExtResource("1_waj3f")
@@ -28,7 +29,7 @@ texture = ExtResource("1_waj3f")
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_cgm1x")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1954523107]
+[node name="PlayerCamera" type="Camera2D" parent="." unique_id=1954523107]
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 
