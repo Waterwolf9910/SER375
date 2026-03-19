@@ -15,6 +15,11 @@ run/main_scene="uid://b8umvly5stvjn"
 config/features=PackedStringArray("4.6", "C#", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+MultiplayerManager="*uid://crhjr3xf3try0"
+GlobalLoader="*uid://d1nj8v5oxmr7"
+
 [display]
 
 window/size/viewport_width=1920
