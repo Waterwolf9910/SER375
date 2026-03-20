@@ -1,5 +1,5 @@
 using Godot;
-using System;
+using Godot.Collections;
 
 public partial class MultiplayerStart : Node {
 
@@ -11,42 +11,71 @@ public partial class MultiplayerStart : Node {
     [Export]
     private Node scene_folder;
     private Node current_scene;
-    [Export]
-    private MultiplayerSpawner spawner;
+    // [Export]
+    // private MultiplayerSpawner spawner;
+    private Array<long> added = [];
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready() {
-        this.spawner.AddSpawnableScene(this.player_scene.ResourcePath);
+        // this.spawner.AddSpawnableScene(this.player_scene.ResourcePath);
 
         MultiplayerManager.INSTANCE.server_created += () => {
             this.current_scene?.QueueFree();
             this.current_scene = this.world.Instantiate();
             this.scene_folder.AddChild(this.current_scene);
+            GD.PrintS("Server's unique_id:", MultiplayerManager.INSTANCE.unique_id);
             this.current_scene.Owner = this.scene_folder;
-            this.spawner.SpawnPath = this.current_scene.GetPath();
-            addPlayer(1);
+            // this.spawner.SpawnPath = this.current_scene.GetPath();
+            // addPlayer(1);
             this.menu.Hide();
+            if (added.Contains(MultiplayerManager.INSTANCE.unique_id)) {
+                return;
+            }
+            addPlayer(MultiplayerManager.INSTANCE.unique_id);
+            added.Add(MultiplayerManager.INSTANCE.unique_id);
             // if (this.GetTree().ChangeSceneToPacked(this.world) != Error.Ok) {
             //     GD.PrintErr("Unable to create world");
             //     MultiplayerManager.INSTANCE.StopServer();
             // }
         };
-        MultiplayerManager.INSTANCE.new_peer += addPlayer;
+        MultiplayerManager.INSTANCE.new_peer += (id) => {
+            if (added.Contains(id)) {
+                return;
+            }
+            addPlayer(id);
+            added.Add(id);
+        };
         MultiplayerManager.INSTANCE.connected += () => {
+            if (MultiplayerManager.INSTANCE.is_server) {
+                return;
+            }
             this.current_scene?.QueueFree();
             this.current_scene = this.world.Instantiate();
             this.scene_folder.AddChild(this.current_scene);
             this.current_scene.Owner = this.scene_folder;
-            this.spawner.SpawnPath = this.current_scene.GetPath();
-            addPlayer(MultiplayerManager.INSTANCE.unique_id);
+            // this.spawner.SpawnPath = this.current_scene.GetPath();
             this.menu.Hide();
+            if (added.Contains(MultiplayerManager.INSTANCE.unique_id)) {
+                return;
+            }
+            addPlayer(MultiplayerManager.INSTANCE.unique_id);
+            added.Add(MultiplayerManager.INSTANCE.unique_id);
             // if (this.GetTree().ChangeSceneToPacked(this.world) != Error.Ok) {
             //     GD.PrintErr("Unable to create world");
             //     MultiplayerManager.INSTANCE.Disconnect();
             // }
         };
-        MultiplayerManager.INSTANCE.player_connected += addPlayer;
+        MultiplayerManager.INSTANCE.player_connected += (id) => {
+            // if (MultiplayerManager.INSTANCE.is_server) {
+            //     return;
+            // }
+            if (added.Contains(id)) {
+                return;
+            }
+            addPlayer(id);
+            added.Add(id);
+        };
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -62,9 +91,9 @@ public partial class MultiplayerStart : Node {
     }
 
     public void addPlayer(long id) {
-        if (!this.Multiplayer.IsServer()) {
-            return;
-        }
+        // if (!this.Multiplayer.IsServer()) {
+        //     return;
+        // }
         var new_player = player_scene.Instantiate<Player>();
         new_player.Name = $"Player {id}";
         this.current_scene.AddChild(new_player, true);
