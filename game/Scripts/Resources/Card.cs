@@ -6,6 +6,7 @@ using System.Collections.Generic;
 [GlobalClass, Tool]
 public partial class CoinEffect : Resource {
     public enum EffectType {
+        //add more effects as game continues to be developed
         Attack, Defense, Heal, Enhance
     }
 
@@ -156,17 +157,19 @@ public partial class Card : Resource {
                 case CoinEffect.EffectType.Heal:
                     self.hp += result.effect.value;
                     break;
+
                 case CoinEffect.EffectType.Enhance:
-                    target.attack += result.effect.value;
+                    self.attack += result.effect.value;
                     break;
-                    /*case CoinEffect.EffectType.Custom:
+                    /*
+                    case CoinEffect.EffectType.Custom:
                         // Custom script hook — handle via your existing actions system
                         GD.Print($"Custom effect triggered on {target.name}");
                         break;
                     */
             }
 
-            GD.Print($"[{name}] Coin landed HEADS — {result.effect.type} ({result.effect.value}) applied to {target.name}");
+            GD.Print($"[{name}] Coin landed HEADS — {result.effect.type} ({result.effect.value}) applied!");
         }
 
         return results;  // Return so UI/animations can react to each flip
