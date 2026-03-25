@@ -13,5 +13,9 @@ public enum ModifierType {
     /// <summary>
     /// i.e % of damage dealt
     /// </summary>
-    PercentAddition
+    PercentAddition,
+    /// <summary>
+    /// applies after all other calculations
+    /// </summary>
+    True
 }

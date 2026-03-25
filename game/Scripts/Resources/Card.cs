@@ -3,21 +3,6 @@ using Godot;
 using Godot.Collections;
 using System;
 using System.Collections.Generic;
-[GlobalClass, Tool]
-public partial class CoinEffect : Resource {
-    public enum EffectType {
-        //add more effects as game continues to be developed
-        Attack, Defense, Heal, Enhance
-    }
-
-    [Export] public EffectType type { get; set; } = EffectType.Attack;
-
-    //The value applied when this coin lands heads (e.g. +10 attack)
-    [Export] public double value { get; set; } = 0;
-
-    //Optional script for custom effects, mirrors Card.actions
-    //[Export] public Script customAction { get; set; } = null;
-}
 
 [GlobalClass, Tool]
 public partial class Card : Resource {
@@ -61,10 +46,7 @@ public partial class Card : Resource {
     /// Customized effects that will run on card play
     /// </summary>
     [Export]
-    public Array<Script> actions { get; private set; } = [];
-
-    [Export]
-    public Array<CoinEffect> coinEffects { get; private set; } = [];
+    public Array<CardEffect> coinEffects { get; private set; } = [];
 
     [Export]
     public SpriteFrames frames { get; private set; } = new SpriteFrames();
@@ -72,21 +54,17 @@ public partial class Card : Resource {
     [Export]
     public Texture2D border { get; set; } = new();
 
-    // Although we have script effects above, we need to have the cards basic attack and defense additions, expecally for other people to make custom cards without scripting
     [Export]
-    public double attack { get; private set; } = 0;
-
-    [Export]
-    public double defense { get; private set; } = 0;
+    public double max_hp { get; private set; } = 0;
 
     [Export]
     public double hp { get; private set; } = 0;
 
     [Export]
-    public double coins { get; private set; } = 0;
+    public double bonus_attack { get; private set; } = 0;
 
     [Export]
-    public Element element { get; private set; } = Element.None;
+    public double current_defense { get; private set; } = 0;
 
     /// <summary>
     /// How many "coins" this card costs
@@ -94,11 +72,31 @@ public partial class Card : Resource {
     [Export]
     public int cost { get; set; } = 0;
 
-
     public int attackCard(Card a, Card b) {
         //this function allows a card to attack another card and reduce the defending cards hp 
         //by the attacking cards attack minus the defending cards defense
-        double damage = a.attack - b.defense;
+        var card_a_attack = 0.0;
+        var card_b_defence = 0.0;
+
+        // should use this result
+        var _a = a.FlipCoins();
+        var _b = b.FlipCoins();
+
+        // var heads = new Godot.RandomNumberGenerator().RandiRange(0, a.coinEffects.Count);
+
+        foreach (var effect in a.coinEffects) {
+            if (effect.type == CardEffect.EffectType.Attack) {
+                card_a_attack += effect.value;
+            }
+        }
+
+        foreach (var effect in b.coinEffects) {
+            if (effect.type == CardEffect.EffectType.Defense) {
+                card_b_defence += effect.value;
+            }
+        }
+
+        double damage = card_a_attack - card_b_defence;
 
         //damage cannot be negative, sets damage to 0 if such
         if (damage < 0) {
@@ -113,7 +111,7 @@ public partial class Card : Resource {
 
 
     public class FlipResult {
-        public CoinEffect effect;
+        public CardEffect effect;
         public bool isHeads;
     }
 
@@ -148,18 +146,24 @@ public partial class Card : Resource {
                 continue;  // Tails — skip
 
             switch (result.effect.type) {
-                case CoinEffect.EffectType.Attack:
+                case CardEffect.EffectType.Attack:
                     target.attackCard(self, target);
                     break;
-                case CoinEffect.EffectType.Defense:
-                    self.defense += result.effect.value;
+                case CardEffect.EffectType.Defense:
+                    foreach (var effect in self.coinEffects) {
+                        if (effect.type == CardEffect.EffectType.Defense) {
+                            self.current_defense += effect.value;
+                        }
+                    }
+                    // self.defense += result.effect.value;
                     break;
-                case CoinEffect.EffectType.Heal:
+                case CardEffect.EffectType.Heal:
                     self.hp += result.effect.value;
                     break;
-
-                case CoinEffect.EffectType.Enhance:
-                    self.attack += result.effect.value;
+                case CardEffect.EffectType.Enhance:
+                    if (result.effect.selection == Selection.Target) {
+                        target.bonus_attack += result.effect.value;
+                    }
                     break;
                     /*
                     case CoinEffect.EffectType.Custom:
