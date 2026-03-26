@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cb5fejxbatbuj" path="res://Scripts/Resources/Card.cs" id="1_7ljbo"]
 [ext_resource type="Texture2D" uid="uid://uc3ktbbdgu37" path="res://Assets/Cards/Card Template Pride.png" id="1_s1uek"]
+[ext_resource type="Script" uid="uid://desxxqjimgrh2" path="res://Scripts/Gameplay/CardEffects/CardEffect.cs" id="2_2o6yf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2o6yf"]
 
@@ -12,6 +13,5 @@ name = "Default"
 description = "This is a default card for testing sizing and illustration. Send in a bug report if you see this during gameplay!"
 frames = SubResource("SpriteFrames_2o6yf")
 border = ExtResource("1_s1uek")
-attack = 1.0
 cost = 1
 metadata/_custom_type_script = "uid://cb5fejxbatbuj"
