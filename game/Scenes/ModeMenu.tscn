@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://xru2210h1imj"]
 
+[ext_resource type="Script" uid="uid://bjwdxpixu34h1" path="res://Scripts/UI/ModeMenu.cs" id="1_qdmsg"]
+
 [sub_resource type="Gradient" id="Gradient_wf015"]
 offsets = PackedFloat32Array(0, 0.5208333, 0.90178573)
 colors = PackedColorArray(0.35976085, 0.65539986, 0.5665153, 1, 0.45925117, 0.697603, 0.7415348, 1, 0.64973944, 0.5844754, 0.9806835, 1)
@@ -25,6 +27,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("1_qdmsg")
 
 [node name="PanelContainer" type="PanelContainer" parent="Control" unique_id=1200345222]
 layout_mode = 1
@@ -95,3 +98,8 @@ size_flags_horizontal = 6
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 50
 text = "    Cards    "
+
+[connection signal="button_down" from="Control/PanelContainer/MarginContainer/VBoxContainer/Menu/Roguelike" to="Control" method="RoguelikePressed"]
+[connection signal="button_down" from="Control/PanelContainer/MarginContainer/VBoxContainer/Menu/Campaign" to="Control" method="CampaignPressed"]
+[connection signal="button_down" from="Control/PanelContainer/MarginContainer/VBoxContainer/Menu/VBoxContainer/Pvp" to="Control" method="PvpPressed"]
+[connection signal="button_down" from="Control/PanelContainer/MarginContainer/VBoxContainer/Menu/VBoxContainer/MarginContainer/Cards" to="Control" method="DeckMenuPressed"]
