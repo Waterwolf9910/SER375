@@ -11,16 +11,29 @@
             "args": "--path ${workspaceFolder} --debug-collisions --debug-paths --debug-navigation --debug-avoidance --remote-debug tcp://127.0.0.1 --no-header",
             "request": "launch",
             "justMyCode": true,
-            "console": "integratedTerminal"
+            "console": "integratedTerminal",
+            "preLaunchTask": "Build Solution"
         },
         {
             "name": "Launch Ryan's Scene",
             "type": "coreclr",
             "program": "godot-mono",
-            "args": "--path ${workspaceFolder} --debug-collisions --debug-paths --debug-navigation --debug-avoidance --remote-debug tcp://127.0.0.1 --no-header --scene res://Scenes/Ryans_Test_Scene.tscn",
+            "args": "--path ${workspaceFolder} --debug-collisions --debug-paths --debug-navigation --debug-avoidance --remote-debug tcp://127.0.0.1 --no-header --scene \"res://Scenes/Test Scenes/ryan.tres\"",
             "request": "launch",
             "justMyCode": true,
-            "console": "integratedTerminal"
+            "console": "integratedTerminal",
+            "preLaunchTask": "Build Solution"
+        },
+        {
+            "name": "Launch Multiplayer Test",
+            "type": "coreclr",
+            "program": "godot-mono",
+            "args": "--path ${workspaceFolder} --debug-collisions --debug-paths --debug-navigation --debug-avoidance --remote-debug tcp://127.0.0.1 --no-header --scene \"res://Scenes/Test Scenes/multiplayer_start.tscn\"",
+            "request": "launch",
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "preLaunchTask": "Build Solution",
+            "suppressMultipleSessionWarning": true,
         }
     ]
 }

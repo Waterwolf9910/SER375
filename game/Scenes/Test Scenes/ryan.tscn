@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://nm4uvt5ojk5g"]
+
+[ext_resource type="Script" uid="uid://b05p4thgpp3m" path="res://Scripts/SceneSpecific/TestScenes/RyansTestScene.cs" id="1_nspbf"]
+
+[sub_resource type="Gradient" id="Gradient_n8dw5"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6seti"]
+gradient = SubResource("Gradient_n8dw5")
+width = 64
+
+[node name="RyansTestScene" type="Node2D" unique_id=209623744]
+script = ExtResource("1_nspbf")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1603540370]
+position = Vector2(-151, 56.25)
+scale = Vector2(0.992, 64)
+texture = SubResource("GradientTexture1D_6seti")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=2047693842]
+position = Vector2(188, -100)
+scale = Vector2(0.992, 64)
+texture = SubResource("GradientTexture1D_6seti")
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=1974158179]
+position = Vector2(-158, -134)
+scale = Vector2(0.992, 64)
+texture = SubResource("GradientTexture1D_6seti")
+
+[node name="Sprite2D4" type="Sprite2D" parent="." unique_id=908069096]
+position = Vector2(118, 70)
+scale = Vector2(0.992, 64)
+texture = SubResource("GradientTexture1D_6seti")
+
+[node name="Label" type="Label" parent="." unique_id=780925398]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.5
+offset_top = -11.5
+offset_right = 22.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Hallo!"
