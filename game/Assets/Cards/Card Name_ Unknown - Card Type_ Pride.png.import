@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxdcwjn3ejdd5"
-path="res://.godot/imported/Card Name_ Take Flight - Card Type_ Pride.png-c910195aa4950d2b2e0fec6b4873f93e.ctex"
+uid="uid://dor16qawc72wl"
+path="res://.godot/imported/Card Name_ Unknown - Card Type_ Pride.png-6a8a1cb1ded18d019db9d8b03fb6e530.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Cards/Card Name_ Take Flight - Card Type_ Pride.png"
-dest_files=["res://.godot/imported/Card Name_ Take Flight - Card Type_ Pride.png-c910195aa4950d2b2e0fec6b4873f93e.ctex"]
+source_file="res://Assets/Cards/Card Name_ Unknown - Card Type_ Pride.png"
+dest_files=["res://.godot/imported/Card Name_ Unknown - Card Type_ Pride.png-6a8a1cb1ded18d019db9d8b03fb6e530.ctex"]
 
 [params]
 
