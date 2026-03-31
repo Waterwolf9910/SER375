@@ -1,11 +1,20 @@
 [gd_scene format=3 uid="uid://b8umvly5stvjn"]
 
 [ext_resource type="Script" uid="uid://cek3ctrk6y7g2" path="res://Scripts/UI/MainMenu.cs" id="1_totuj"]
+[ext_resource type="Texture2D" uid="uid://b5vlcnyv0t128" path="res://Assets/Cards/Card Name_ Blood - Card Type_ Pride.png" id="2_hcxxy"]
+[ext_resource type="Texture2D" uid="uid://bbeai5rpq33e5" path="res://Assets/Cards/Card name_ Fireball - Card Type_ Pride.png" id="3_4lp62"]
+[ext_resource type="Texture2D" uid="uid://ces63ypyr6ij3" path="res://Assets/Cards/Card Name_ Greedy Snake - Card Type_ Pride.png" id="4_0vewo"]
+[ext_resource type="Texture2D" uid="uid://csdh3nutdc8bj" path="res://Assets/Cards/Card Name_ Guard Turtle - Card Type_ Pride.png" id="5_wib81"]
+[ext_resource type="Texture2D" uid="uid://te3pltssdw4k" path="res://Assets/Cards/Card name_ Lava - Card type_ Pride.png" id="6_tbdrc"]
+[ext_resource type="Texture2D" uid="uid://stlsqbjrukb2" path="res://Assets/Cards/Card Name_ Prideful Hatchling - Card Type_ Pride.png" id="7_vuees"]
+[ext_resource type="Texture2D" uid="uid://6ujlqmbcml66" path="res://Assets/Cards/Card name_ Raging Dragon - Card type_ Pride.png" id="8_3hb06"]
 
 [sub_resource type="Theme" id="Theme_7yr4w"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7yr4w"]
 font_size = 24
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hcxxy"]
 
 [node name="Node2D" type="Node2D" unique_id=1646011784]
 
@@ -85,6 +94,43 @@ text = "Settings"
 [node name="Exit" type="Button" parent="CanvasLayer/Control/MainMenu/PanelContainer/MarginContainer/BoxContainer/VBoxContainer" unique_id=953075876]
 layout_mode = 2
 text = "Exit"
+
+[node name="Pride Deck" type="Sprite2D" parent="." unique_id=2140734464]
+
+[node name="Sprite2D" type="Sprite2D" parent="Pride Deck" unique_id=1150903103]
+
+[node name="Area2D" type="Area2D" parent="Pride Deck" unique_id=1684504295]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pride Deck/Area2D" unique_id=1856211677]
+shape = SubResource("RectangleShape2D_hcxxy")
+
+[node name="CardNameBloodCardTypePride" type="Sprite2D" parent="Pride Deck" unique_id=730708688]
+position = Vector2(297, 852)
+texture = ExtResource("2_hcxxy")
+
+[node name="CardNameFireballCardTypePride" type="Sprite2D" parent="Pride Deck" unique_id=1127428720]
+position = Vector2(241, 851)
+texture = ExtResource("3_4lp62")
+
+[node name="CardNameGreedySnakeCardTypePride" type="Sprite2D" parent="Pride Deck" unique_id=237797460]
+position = Vector2(176, 861)
+texture = ExtResource("4_0vewo")
+
+[node name="CardNameGuardTurtleCardTypePride" type="Sprite2D" parent="Pride Deck" unique_id=1884263166]
+position = Vector2(106, 887)
+texture = ExtResource("5_wib81")
+
+[node name="CardNameLavaCardTypePride" type="Sprite2D" parent="Pride Deck" unique_id=201801814]
+position = Vector2(179, 925)
+texture = ExtResource("6_tbdrc")
+
+[node name="CardNamePridefulHatchlingCardTypePride" type="Sprite2D" parent="Pride Deck" unique_id=358411133]
+position = Vector2(252, 937)
+texture = ExtResource("7_vuees")
+
+[node name="CardNameRagingDragonCardTypePride" type="Sprite2D" parent="Pride Deck" unique_id=1572274746]
+position = Vector2(104, 979)
+texture = ExtResource("8_3hb06")
 
 [connection signal="pressed" from="CanvasLayer/Control/MainMenu/PanelContainer/MarginContainer/BoxContainer/VBoxContainer/Start" to="CanvasLayer/Control/MainMenu" method="OnStartPressed"]
 [connection signal="pressed" from="CanvasLayer/Control/MainMenu/PanelContainer/MarginContainer/BoxContainer/VBoxContainer/Saves" to="CanvasLayer/Control/MainMenu" method="OnSavesPressed"]
