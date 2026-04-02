@@ -90,7 +90,7 @@ text = "      PvP      "
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-theme_override_constants/margin_top = 136
+theme_override_constants/margin_top = 114
 
 [node name="Cards" type="Button" parent="Control/PanelContainer/MarginContainer/VBoxContainer/Menu/VBoxContainer/MarginContainer" unique_id=184855522]
 layout_mode = 2
