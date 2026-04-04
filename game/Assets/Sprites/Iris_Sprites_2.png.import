@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkfpc5ipp4gt4"
-path="res://.godot/imported/Iris_Sprite.png-233405f5c58e388715c3972f8625350a.ctex"
+uid="uid://cdk4qjo3hxujy"
+path="res://.godot/imported/Iris_Sprites_2.png-3a3484e2b8dde2ecfbe2516d979cc888.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Iris_Sprite.png"
-dest_files=["res://.godot/imported/Iris_Sprite.png-233405f5c58e388715c3972f8625350a.ctex"]
+source_file="res://Assets/Sprites/Iris_Sprites_2.png"
+dest_files=["res://.godot/imported/Iris_Sprites_2.png-3a3484e2b8dde2ecfbe2516d979cc888.ctex"]
 
 [params]
 
