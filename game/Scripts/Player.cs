@@ -1,59 +1,77 @@
 using Godot;
-using System;
 
-public partial class Player : CharacterBody2D, IEntityHolder {
+public partial class Player: AnimatedSprite2D
+{
 
-    [Export]
-    public Entity entity {get; set;} = new();
-    [Export]
-    public float Speed = 300.0f;
-    // public const float JumpVelocity = -400.0f;
-    [Export]
-    private Camera2D camera;
+	// Don't forget to rebuild the project so the editor knows about the new signal.
 
-    public override void _PhysicsProcess(double delta) {
-        Vector2 velocity = Velocity;
+	[Signal]
+	public delegate void HitEventHandler();
+	public override void _Ready()
+	{
+		ScreenSize = GetViewportRect().Size;
+		Hide();
+		Start(Vector2.Zero);
+	}
+	public void Start(Vector2 position)
+	{
+		Position = position;
+		Show();
+		// GetNode<CollisionShape2D>("CollisionShape2D").Disabled = false;
+	}
+    public override void _Process(double delta) {
+        var velocity = Vector2.Zero; // The player's movement vector.
 
-        // // Add the gravity.
-        // if (!IsOnFloor()) {
-        //     velocity += GetGravity() * (float) delta;
-        // }
-
-        // // Handle Jump.
-        // if (Input.IsActionJustPressed("ui_accept") && IsOnFloor()) {
-        //     velocity.Y = JumpVelocity;
-        // }
-
-        // Get the input direction and handle the movement/deceleration.
-        // As good practice, you should replace UI actions with custom gameplay actions.
-
-        if (!this.IsMultiplayerAuthority()) {
-        //     GD.PrintS(this.Multiplayer.GetUniqueId());
-            return;
+        if (Input.IsActionPressed("Right")) {
+            velocity.X += 1;
         }
-        Vector2 direction = Input.GetVector("left", "right", "up", "down");
-        if (direction.X == 0) {
-            velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+
+        if (Input.IsActionPressed("Left")) {
+            velocity.X -= 1;
         }
-        velocity.X = direction.X * Speed;
-        velocity.Y = direction.Y * Speed;
 
-        Velocity = velocity;
-        MoveAndSlide();
-    }
-
-    public override void _Ready() {
-        base._Ready();
-        var label = this.GetNode<Label>("%Label");
-        label.Text = Name;
-        if (this.IsMultiplayerAuthority()) {
-            this.camera.MakeCurrent();
+        if (Input.IsActionPressed("Down")) {
+            velocity.Y += 1;
         }
-    }
 
-    public override void _EnterTree() {
-        base._EnterTree();
-        GD.PrintS("enter", int.Parse(this.Name.ToString().Replace("Player ", "")));
-        this.SetMultiplayerAuthority(int.Parse(this.Name.ToString().Replace("Player ", "")));
-    }
+        if (Input.IsActionPressed("Up")) {
+            velocity.Y -= 1;
+        }
+
+        if (velocity.Length() > 0) {
+            velocity = velocity.Normalized() * Speed;
+			this.Play();
+        } else {
+            this.Stop();
+        }
+        Position += velocity * (float) delta;
+        Position = new Vector2(
+            x: Mathf.Clamp(Position.X, 0, ScreenSize.X),
+            y: Mathf.Clamp(Position.Y, 0, ScreenSize.Y)
+        );
+        if (velocity.X > 0) {
+            this.Animation = "Right";
+        } else if (velocity.X < 0) {
+            this.Animation = "Left";
+        } 
+        else if (velocity.Y < 0) {
+            this.Animation = "Back";
+        } else if (velocity.Y > 0) {
+            this.Animation = "Front";
+        }
+	}
+
+	[Export]
+	public int Speed { get; set; } = 400; // How fast the player will move (pixels/sec).
+
+	public Vector2 ScreenSize; // Size of the game window.
+
+	// We also specified this function name in PascalCase in the editor's connection window.
+	private void OnBodyEntered(Node2D body)
+	{
+		Hide(); // Player disappears after being hit.
+		EmitSignal(SignalName.Hit);
+		// Must be deferred as we can't change physics properties on a physics callback.
+		// GetNode<CollisionShape2D>("CollisionShape2D").SetDeferred(CollisionShape2D.PropertyName.Disabled, true);
+	}
 }
