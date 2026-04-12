@@ -8,7 +8,7 @@
 
 [sub_resource type="Resource" id="Resource_tkftn"]
 script = ExtResource("2_d80vx")
-value = 3.0
+value = 10.0
 element = 16
 metadata/_custom_type_script = "uid://desxxqjimgrh2"
 
