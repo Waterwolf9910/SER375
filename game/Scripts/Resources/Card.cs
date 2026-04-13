@@ -11,15 +11,15 @@ public partial class Card : Resource {
 
     [Export]
     public string id {
-        get {
-            return _id.Replace("card.", "");
-        }
+        get => this._id.Replace("card.", "");
         private set {
             if (string.IsNullOrWhiteSpace(value)) {
-                _id = "card." + name.Replace(" ", "_").ToLower();
+                this._id = "card." + name.Replace(" ", "_").ToLower();
+                this.EmitChanged();
                 return;
             }
-            _id = "card." + value;
+            this._id = "card." + value;
+            this.EmitChanged();
         }
     }
 
@@ -27,20 +27,25 @@ public partial class Card : Resource {
 
     [Export]
     public string name {
-        get {
-            return this._name;
-        }
-        private set {
+        get => this._name; private set {
             string old_gen_id = "card." + name.Replace(" ", "_").ToLower();
             if (string.IsNullOrWhiteSpace(this._id) || this._id == old_gen_id) {
                 this._id = "card." + value.Replace(" ", "_").ToLower();
             }
             this._name = value;
+            this.EmitChanged();
         }
     }
 
+    public string _description = "";
+
     [Export]
-    public string description { get; private set; } = "";
+    public string description {
+        get => this._description; private set {
+            this._description = value;
+            this.EmitChanged();
+        }
+    }
 
     /// <summary>
     /// Customized effects that will run on card play
@@ -48,29 +53,73 @@ public partial class Card : Resource {
     [Export]
     public Array<CardEffect> coinEffects { get; private set; } = [];
 
+    public SpriteFrames _frames = new();
     [Export]
-    public SpriteFrames frames { get; private set; } = new SpriteFrames();
+    public SpriteFrames frames {
+        get => this._frames;
+        private set {
+            this._frames = value;
+            this._frames.Changed += this.EmitChanged;
+            this.EmitChanged();
+        }
+    }
+    // public AnimatedTexture frames { get; private set; } = new AnimatedTexture();
+
+    public Texture2D _border = new();
+    [Export]
+    public Texture2D border {
+        get => this._border; set {
+            this._border = value;
+            this.EmitChanged();
+        }
+    }
+
+
+    public double _max_hp = 0;
 
     [Export]
-    public Texture2D border { get; set; } = new();
+    public double max_hp {
+        get => this._max_hp; private set {
+            this._max_hp = value;
+            this.EmitChanged();
+        }
+    }
 
+    public double _hp = 0;
     [Export]
-    public double max_hp { get; private set; } = 0;
+    public double hp {
+        get => this._hp; private set {
+            this._hp = value;
+            this.EmitChanged();
+        }
+    }
 
+    public double _bonus_attack = 0;
     [Export]
-    public double hp { get; private set; } = 0;
+    public double bonus_attack {
+        get => this._bonus_attack; private set {
+            this._bonus_attack = value;
+            this.EmitChanged();
+        }
+    }
 
+    public double _current_defense = 0;
     [Export]
-    public double bonus_attack { get; private set; } = 0;
+    public double current_defense {
+        get => this._current_defense; private set {
+            this._current_defense = value;
+            this.EmitChanged();
+        }
+    }
 
+    public double _max_defense = 0;
     [Export]
-    public double current_defense { get; private set; } = 0;
-
-    /// <summary>
-    /// How many "coins" this card costs
-    /// </summary>
-    [Export]
-    public int cost { get; set; } = 0;
+    public double max_defense {
+        get => this._max_defense; private set {
+            this._max_defense = value;
+            this.EmitChanged();
+        }
+    }
 
     public int attackCard(Card a, Card b) {
         //this function allows a card to attack another card and reduce the defending cards hp 

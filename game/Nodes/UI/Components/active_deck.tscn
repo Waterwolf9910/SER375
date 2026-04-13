@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://c85rl6vy7b8x2"]
+
+[ext_resource type="Script" uid="uid://duwetfgenbaah" path="res://Scripts/UI/Components/ActiveDeck.cs" id="1_8goqa"]
+[ext_resource type="PackedScene" uid="uid://42hw7cwptft4" path="res://Nodes/UI/Components/CardComponent.tscn" id="1_14vfo"]
+
+[node name="ActiveDeck" type="VBoxContainer" unique_id=2132347446 node_paths=PackedStringArray("anti_hero_top", "anti_hero_bottom", "helpers")]
+script = ExtResource("1_8goqa")
+anti_hero_top = NodePath("AntiHeroTop")
+anti_hero_bottom = NodePath("AntiHeroBottom")
+helpers = [NodePath("HBoxContainer/CardComponent"), NodePath("HBoxContainer/CardComponent2"), NodePath("HBoxContainer/CardComponent3")]
+
+[node name="AntiHeroTop" parent="." unique_id=384869195 instance=ExtResource("1_14vfo")]
+visible = false
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1641997081]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 260
+alignment = 1
+
+[node name="CardComponent" parent="HBoxContainer" unique_id=2068955884 instance=ExtResource("1_14vfo")]
+layout_mode = 2
+
+[node name="CardComponent2" parent="HBoxContainer" unique_id=648571786 instance=ExtResource("1_14vfo")]
+layout_mode = 2
+
+[node name="CardComponent3" parent="HBoxContainer" unique_id=1612044700 instance=ExtResource("1_14vfo")]
+layout_mode = 2
+
+[node name="AntiHeroBottom" parent="." unique_id=1764189423 instance=ExtResource("1_14vfo")]
+layout_mode = 2

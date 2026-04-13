@@ -17,11 +17,14 @@ script = ExtResource("2_d80vx")
 custom_action_script = ExtResource("3_d80vx")
 metadata/_custom_type_script = "uid://desxxqjimgrh2"
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_d80vx"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_m8hbk"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 3.0,
 "texture": ExtResource("2_tkftn")
+}, {
+"duration": 1.0,
+"texture": null
 }],
 "loop": true,
 "name": &"default",
@@ -32,11 +35,12 @@ animations = [{
 script = ExtResource("1_senq0")
 id = "drago_jr."
 name = "Drago Jr."
-description = "Boi"
+description = "[center]The Boi ;3[/center]"
 coinEffects = Array[ExtResource("2_d80vx")]([SubResource("Resource_tkftn"), SubResource("Resource_d80vx")])
-frames = SubResource("SpriteFrames_d80vx")
+frames = SubResource("SpriteFrames_m8hbk")
 border = ExtResource("1_pgilo")
 max_hp = 35.0
 hp = 35.0
 current_defense = 7.0
+max_defense = 7.0
 metadata/_custom_type_script = "uid://cb5fejxbatbuj"
