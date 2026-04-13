@@ -2,13 +2,29 @@
 
 [ext_resource type="Texture2D" uid="uid://uc3ktbbdgu37" path="res://Assets/Cards/Card Template Pride.png" id="1_pgilo"]
 [ext_resource type="Script" uid="uid://cb5fejxbatbuj" path="res://Scripts/Resources/Card.cs" id="1_senq0"]
+[ext_resource type="Script" uid="uid://desxxqjimgrh2" path="res://Scripts/Gameplay/CardEffects/CardEffect.cs" id="2_d80vx"]
 [ext_resource type="Texture2D" uid="uid://du114h75xi6d3" path="res://Assets/Cards/Card Name_ Prideful Hatchling - Hatchling Only - Card Type_ Pride.png" id="2_tkftn"]
+[ext_resource type="Script" uid="uid://rvypnckvaifh" path="res://Scripts/Gameplay/CardActions/TrueDamage.cs" id="3_d80vx"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_d80vx"]
+[sub_resource type="Resource" id="Resource_tkftn"]
+script = ExtResource("2_d80vx")
+value = 10.0
+element = 16
+metadata/_custom_type_script = "uid://desxxqjimgrh2"
+
+[sub_resource type="Resource" id="Resource_d80vx"]
+script = ExtResource("2_d80vx")
+custom_action_script = ExtResource("3_d80vx")
+metadata/_custom_type_script = "uid://desxxqjimgrh2"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m8hbk"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 3.0,
 "texture": ExtResource("2_tkftn")
+}, {
+"duration": 1.0,
+"texture": null
 }],
 "loop": true,
 "name": &"default",
@@ -19,7 +35,12 @@ animations = [{
 script = ExtResource("1_senq0")
 id = "drago_jr."
 name = "Drago Jr."
-description = "Boi"
-frames = SubResource("SpriteFrames_d80vx")
+description = "[center]The Boi ;3[/center]"
+coinEffects = Array[ExtResource("2_d80vx")]([SubResource("Resource_tkftn"), SubResource("Resource_d80vx")])
+frames = SubResource("SpriteFrames_m8hbk")
 border = ExtResource("1_pgilo")
+max_hp = 35.0
+hp = 35.0
+current_defense = 7.0
+max_defense = 7.0
 metadata/_custom_type_script = "uid://cb5fejxbatbuj"
