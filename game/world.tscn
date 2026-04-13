@@ -1,8 +1,9 @@
-[gd_scene format=3 uid="uid://xbfeuq2ry21t"]
+[gd_scene format=3 uid="uid://cyqdn2q4wvsm6"]
 
 [ext_resource type="Texture2D" uid="uid://bewnei02jo1j7" path="res://Assets/Tilesets/PokemonLike.png" id="1_f3sb7"]
 [ext_resource type="Texture2D" uid="uid://cl358qese72a6" path="res://Assets/Sprites/Iris_Sprites_3.png" id="3_aqk2v"]
 [ext_resource type="Texture2D" uid="uid://cdk4qjo3hxujy" path="res://Assets/Sprites/Iris_Sprites_2.png" id="3_dwbse"]
+[ext_resource type="Texture2D" uid="uid://bkfpc5ipp4gt4" path="res://Assets/Sprites/Iris_Sprite.png" id="5_036b0"]
 [ext_resource type="Script" uid="uid://bt0yxrglcs8y6" path="res://Scripts/Player.cs" id="5_gbfbk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fj7yv"]
@@ -1722,4 +1723,16 @@ script = ExtResource("5_gbfbk")
 
 [node name="Camera2D" type="Camera2D" parent="IrisSprite" unique_id=1037645874]
 position = Vector2(0, -4)
-zoom = Vector2(9, 9)
+zoom = Vector2(3, 3)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="IrisSprite" unique_id=492805033]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="IrisSprite/CharacterBody2D" unique_id=2047199574]
+
+[node name="NPC" type="Sprite2D" parent="." unique_id=274355457]
+position = Vector2(89, 48)
+texture = ExtResource("5_036b0")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="NPC" unique_id=93298414]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC/CharacterBody2D" unique_id=438122149]
