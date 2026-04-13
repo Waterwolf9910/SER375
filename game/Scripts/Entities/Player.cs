@@ -3,6 +3,7 @@ using Godot;
 public partial class Player : CharacterBody2D {
 
     [Export] AnimatedSprite2D sprite;
+    [Export] public Deck deck;
 
     // Don't forget to rebuild the project so the editor knows about the new signal.
 
@@ -10,15 +11,17 @@ public partial class Player : CharacterBody2D {
     public delegate void HitEventHandler();
     public override void _Ready() {
         ScreenSize = GetViewportRect().Size;
-        Hide();
-        Start(Vector2.Zero);
     }
-    public void Start(Vector2 position) {
-        Position = position;
-        Show();
-        // GetNode<CollisionShape2D>("CollisionShape2D").Disabled = false;
-    }
+
     public override void _Process(double delta) {
+        handleMovement(delta);
+
+        if (Input.IsActionJustPressed("Interact") && current_enemy != null) {
+            startBattle();
+        }
+    }
+
+    public void handleMovement(double delta) {
         var velocity = Vector2.Zero; // The player's movement vector.
 
         if (Input.IsActionPressed("Right")) {
@@ -57,6 +60,7 @@ public partial class Player : CharacterBody2D {
         } else if (velocity.Y > 0) {
             this.sprite.Animation = "Front";
         }
+
     }
 
     [Export]
@@ -64,11 +68,27 @@ public partial class Player : CharacterBody2D {
 
     public Vector2 ScreenSize; // Size of the game window.
 
+    public BattlableNPC current_enemy; // The enemy the player is currently battling, if any.
     // We also specified this function name in PascalCase in the editor's connection window.
-    private void OnBodyEntered(Node2D body) {
-        Hide(); // Player disappears after being hit.
-        EmitSignal(SignalName.Hit);
-        // Must be deferred as we can't change physics properties on a physics callback.
-        // GetNode<CollisionShape2D>("CollisionShape2D").SetDeferred(CollisionShape2D.PropertyName.Disabled, true);
+    private void OnAreaEntered(Area2D body) {
+        if (body.GetParent() is BattlableNPC npc) {
+            current_enemy = npc;
+            GD.Print("Entered battle area of " + npc.Name);
+        }
+    }
+
+    private void OnAreaExited(Area2D body) {
+        if (body.GetParent() is BattlableNPC npc) {
+            current_enemy = null;
+            GD.Print("Exited battle area of " + npc.Name);
+        }
+    }
+
+    public void startBattle() {
+
+        //Battle Start Function Here
+        this.switchToBattle(this.deck, current_enemy.deck);
+
+        GD.Print("Battle Started!");
     }
 }

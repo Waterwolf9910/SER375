@@ -1,12 +1,14 @@
 
 using Godot;
+using System.Security.Cryptography.X509Certificates;
 
 public partial class Battle : Node2D {
 
-    #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
     [Export] public ActiveDeck player1_ad;
     [Export] public ActiveDeck player2_ad;
-    #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
+
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
 
     PlayerInfo? player1;
     PlayerInfo? player2;
@@ -29,4 +31,19 @@ public partial class Battle : Node2D {
         GD.PrintS(this.player1?.player_name, this.player2?.player_name);
     }
 
+    public void initBattle(Deck P, Deck NPC) {
+        this.player1_ad.anti_hero.SetCard(GlobalLoader.INSTANCE.getCard(P.anti_hero_id));
+        this.player2_ad.anti_hero.SetCard(GlobalLoader.INSTANCE.getCard(NPC.anti_hero_id));
+
+
+    }
+}
+public static class BattleExtension {
+    public static PackedScene battle_scene = GD.Load<PackedScene>("res://Scenes/Test Scenes/battle.tscn");
+    public static void switchToBattle(this Node node, Deck player, Deck npc) {
+        var battle = battle_scene.Instantiate<Battle>();
+        battle.initBattle(player, npc);
+        node.GetTree().ChangeSceneToNode(battle);
+        //switch to battle scene and init battle with player info
+    }
 }

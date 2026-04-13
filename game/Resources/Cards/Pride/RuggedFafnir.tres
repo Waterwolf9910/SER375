@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Card" format=3 uid="uid://xu04teemxbwt"]
+[gd_resource type="Resource" script_class="Card" format=3 uid="uid://dbp1cvfrualtv"]
 
 [ext_resource type="Script" uid="uid://desxxqjimgrh2" path="res://Scripts/Gameplay/CardEffects/CardEffect.cs" id="1_7khpl"]
 [ext_resource type="Script" uid="uid://cb5fejxbatbuj" path="res://Scripts/Resources/Card.cs" id="2_51uyw"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://desxxqjimgrh2" path="res://Scripts/Gameplay/CardEffects/CardEffect.cs" id="1_qidkw"]
 [ext_resource type="Script" uid="uid://cb5fejxbatbuj" path="res://Scripts/Resources/Card.cs" id="2_dq1si"]
-[ext_resource type="Texture2D" uid="uid://cqubq6wxe5ktv" path="res://Assets/Sprites/Iris_Sprite.png" id="2_nh4a1"]
+[ext_resource type="Texture2D" uid="uid://bkfpc5ipp4gt4" path="res://Assets/Sprites/Iris_Sprite.png" id="2_nh4a1"]
 
 [sub_resource type="Texture2D" id="Texture2D_72yym"]
 resource_local_to_scene = false

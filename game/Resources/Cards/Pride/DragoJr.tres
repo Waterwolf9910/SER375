@@ -42,5 +42,4 @@ border = ExtResource("1_pgilo")
 max_hp = 35.0
 hp = 35.0
 current_defense = 7.0
-max_defense = 7.0
 metadata/_custom_type_script = "uid://cb5fejxbatbuj"

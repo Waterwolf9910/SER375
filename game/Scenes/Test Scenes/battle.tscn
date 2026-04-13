@@ -1,12 +1,16 @@
-[gd_scene format=3 uid="uid://bamd882dcf52i"]
+[gd_scene format=3 uid="uid://cd40jichnchwf"]
 
+[ext_resource type="Script" path="res://Scripts/SceneSpecific/TestScenes/Battle.cs" id="1_euu30"]
 [ext_resource type="Texture2D" uid="uid://c75s2hn0p7v57" path="res://Assets/Combat/concept.png" id="1_ncae4"]
-[ext_resource type="PackedScene" uid="uid://c85rl6vy7b8x2" path="res://Nodes/UI/Components/active_deck.tscn" id="2_kkpjb"]
+[ext_resource type="PackedScene" path="res://Nodes/UI/Components/active_deck.tscn" id="2_kkpjb"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kkpjb"]
 texture = ExtResource("1_ncae4")
 
-[node name="Node2D" type="Node2D" unique_id=1495620283]
+[node name="Node2D" type="Node2D" unique_id=1495620283 node_paths=PackedStringArray("player1_ad", "player2_ad")]
+script = ExtResource("1_euu30")
+player1_ad = NodePath("CanvasLayer/PanelContainer/VBoxContainer/ActiveDeck2")
+player2_ad = NodePath("CanvasLayer/PanelContainer/VBoxContainer/ActiveDeck")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=517955702]
 
@@ -31,3 +35,6 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 is_top = true
+
+[node name="Camera2D" type="Camera2D" parent="CanvasLayer" unique_id=384051731]
+position = Vector2(943, 538)

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Deck" format=3 uid="uid://7cnlkhvvqwd7"]
+
+[ext_resource type="Script" uid="uid://v44w0qms68ku" path="res://Scripts/Resources/Deck.cs" id="1_fs01v"]
+
+[resource]
+script = ExtResource("1_fs01v")
+card_ids = Array[String](["drago", "drago_jr.", "greedy_snake", "guard_turtle", "rugged_fafnir"])
+metadata/_custom_type_script = "uid://v44w0qms68ku"

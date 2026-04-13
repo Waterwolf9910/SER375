@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Card" format=3 uid="uid://bgubehegghbbo"]
+[gd_resource type="Resource" script_class="Card" format=3 uid="uid://dlpcawise2f21"]
 
 [ext_resource type="Script" uid="uid://desxxqjimgrh2" path="res://Scripts/Gameplay/CardEffects/CardEffect.cs" id="1_do83q"]
 [ext_resource type="Script" uid="uid://rvypnckvaifh" path="res://Scripts/Gameplay/CardActions/TrueDamage.cs" id="2_4ntaj"]
