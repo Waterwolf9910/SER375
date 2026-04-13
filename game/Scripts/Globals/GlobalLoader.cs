@@ -5,7 +5,11 @@ using Godot.Collections;
 using System.Linq;
 
 public partial class GlobalLoader : Node {
-    
+
+    #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
+    public static GlobalLoader INSTANCE {get; private set;}
+    #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
+
     // card_id, card
     [Export]
     private Dictionary<string, Card> internal_cards = [];
@@ -28,6 +32,7 @@ public partial class GlobalLoader : Node {
 
     // load our base cards here
     public override void _Ready() {
+        INSTANCE = this;
         base._Ready();
         var path = "res://Resources"; //think of names to place items, cards, etc. so we are not loading all of our resources at once
         var card_folder = DirAccess.Open(path);
@@ -58,5 +63,35 @@ public partial class GlobalLoader : Node {
         }
     }
 
+    public Card? getCard(string id) {
+        if (!this.internal_cards.TryGetValue(id, out var card)) {
+            return null;
+        }
+        return card;
+    }
+
+    public Card? getCard(string modid, string id) {
+        if (!this.modded_cards.TryGetValue(modid, out var cards) || !cards.TryGetValue(id, out var card) ) {
+            return null;
+        }
+        return card;
+    }
+
+    public Item? getItem(string id) {
+        if (!this.internal_items.TryGetValue(id, out var item)) {
+            return null;
+        }
+        return item;
+    }
+
+    public Item? getItem(string modid, string id) {
+        if (!this.modded_items.TryGetValue(modid, out var items) || !items.TryGetValue(id, out var item) ) {
+            return null;
+        }
+        return item;
+    }
+
+    #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
     private GlobalLoader() {}
+    #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
 }

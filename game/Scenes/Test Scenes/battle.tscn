@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://bamd882dcf52i"]
+
+[ext_resource type="Texture2D" uid="uid://c75s2hn0p7v57" path="res://Assets/Combat/concept.png" id="1_ncae4"]
+[ext_resource type="PackedScene" uid="uid://c85rl6vy7b8x2" path="res://Nodes/UI/Components/active_deck.tscn" id="2_kkpjb"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kkpjb"]
+texture = ExtResource("1_ncae4")
+
+[node name="Node2D" type="Node2D" unique_id=1495620283]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=517955702]
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer" unique_id=1003635511]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_kkpjb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer" unique_id=24951263]
+layout_mode = 2
+
+[node name="ActiveDeck" parent="CanvasLayer/PanelContainer/VBoxContainer" unique_id=2132347446 instance=ExtResource("2_kkpjb")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="ActiveDeck2" parent="CanvasLayer/PanelContainer/VBoxContainer" unique_id=1046149995 instance=ExtResource("2_kkpjb")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+is_top = true

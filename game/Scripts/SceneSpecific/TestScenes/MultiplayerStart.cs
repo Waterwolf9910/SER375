@@ -3,50 +3,46 @@ using System;
 
 public partial class MultiplayerStart : Node {
 
+    public static MultiplayerStart? MULTIPLAYER_INSTANCE {get; private set;}
     private PackedScene world {get;} = ResourceLoader.Load<PackedScene>("res://Scenes/Test Scenes/ryan.tscn");
-    private PackedScene player_scene {get;} = ResourceLoader.Load<PackedScene>("res://Nodes/Entities/test_player.tscn");
+    // private PackedScene player_scene {get;} = ResourceLoader.Load<PackedScene>("res://Nodes/Entities/test_player.tscn");
     #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
     [Export]
     private Control menu;
     [Export]
-    private Node scene_folder;
-    private Node current_scene;
+    public Node scene_folder;
+    public Node current_scene;
     [Export]
-    private MultiplayerSpawner spawner;
+    public MultiplayerSpawner spawner;
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready() {
-        this.spawner.AddSpawnableScene(this.player_scene.ResourcePath);
+        MULTIPLAYER_INSTANCE = this;
+        // this.spawner.AddSpawnableScene(this.player_scene.ResourcePath);
 
         MultiplayerManager.INSTANCE.server_created += () => {
-            this.current_scene?.QueueFree();
-            this.current_scene = this.world.Instantiate();
-            this.scene_folder.AddChild(this.current_scene);
-            this.current_scene.Owner = this.scene_folder;
-            this.spawner.SpawnPath = this.current_scene.GetPath();
-            addPlayer(1);
+            this.SwitchMultiplayerScene(world);
             this.menu.Hide();
             // if (this.GetTree().ChangeSceneToPacked(this.world) != Error.Ok) {
             //     GD.PrintErr("Unable to create world");
             //     MultiplayerManager.INSTANCE.StopServer();
             // }
         };
-        MultiplayerManager.INSTANCE.new_peer += addPlayer;
+        // MultiplayerManager.INSTANCE.new_peer += addPlayer;
         MultiplayerManager.INSTANCE.connected += () => {
-            this.current_scene?.QueueFree();
-            this.current_scene = this.world.Instantiate();
-            this.scene_folder.AddChild(this.current_scene);
-            this.current_scene.Owner = this.scene_folder;
-            this.spawner.SpawnPath = this.current_scene.GetPath();
-            addPlayer(MultiplayerManager.INSTANCE.unique_id);
+            this.SwitchMultiplayerScene(world);
             this.menu.Hide();
             // if (this.GetTree().ChangeSceneToPacked(this.world) != Error.Ok) {
             //     GD.PrintErr("Unable to create world");
             //     MultiplayerManager.INSTANCE.Disconnect();
             // }
         };
-        MultiplayerManager.INSTANCE.player_connected += addPlayer;
+        MultiplayerManager.INSTANCE.disconnected += () => {
+            this.current_scene?.QueueFree();
+            this.menu.Show();
+        };
+        // MultiplayerManager.INSTANCE.player_connected += addPlayer;
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -54,19 +50,42 @@ public partial class MultiplayerStart : Node {
     }
 
     public void CreateServer() {
-        MultiplayerManager.INSTANCE.StartServer();
+        MultiplayerManager.INSTANCE.startServer();
     }
 
     public void JoinServer() {
-        MultiplayerManager.INSTANCE.ConnectToServer("127.0.0.1", MultiplayerManager.PORT);
+        MultiplayerManager.INSTANCE.connectToServer("127.0.0.1", MultiplayerManager.PORT);
     }
 
-    public void addPlayer(long id) {
-        if (!this.Multiplayer.IsServer()) {
-            return;
+    protected override void Dispose(bool disposing) {
+        base.Dispose(disposing);
+        MULTIPLAYER_INSTANCE = null;
+    }
+    
+}
+public static class Extensions {
+    public static Node SwitchMultiplayerScene(this Node node, PackedScene scene) {
+        var current_scene = scene.Instantiate();
+        return SwitchMultiplayerScene(node, current_scene);
+    }
+    public static T SwitchMultiplayerScene<T>(this Node node, T instantiated_scene) where T : Node {
+        if (MultiplayerStart.MULTIPLAYER_INSTANCE == null) {
+            throw new Exception("Not in a multiplayer mode");
         }
-        var new_player = player_scene.Instantiate<Player>();
-        new_player.Name = $"Player {id}";
-        this.current_scene.AddChild(new_player, true);
+        MultiplayerStart.MULTIPLAYER_INSTANCE.current_scene?.QueueFree();
+        
+        instantiated_scene.Name = "@Scene@";
+        instantiated_scene.Owner = MultiplayerStart.MULTIPLAYER_INSTANCE.scene_folder;
+        MultiplayerStart.MULTIPLAYER_INSTANCE.spawner.SpawnPath = instantiated_scene.GetPath();
+        MultiplayerStart.MULTIPLAYER_INSTANCE.scene_folder.AddChild(instantiated_scene);
+        MultiplayerStart.MULTIPLAYER_INSTANCE.current_scene = instantiated_scene;
+        return instantiated_scene;
+    }
+
+    public static void AddSyncScene(this Node node, string resource_path) {
+        if (MultiplayerStart.MULTIPLAYER_INSTANCE == null) {
+            throw new Exception("Not in a multiplayer mode");
+        }
+        MultiplayerStart.MULTIPLAYER_INSTANCE.spawner.AddSpawnableScene(resource_path);
     }
 }
