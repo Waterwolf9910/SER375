@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://crt2i0lqpvup7"]
+
+[ext_resource type="Texture2D" uid="uid://b5vlcnyv0t128" path="res://Assets/Cards/Card Name_ Blood - Card Type_ Pride.png" id="1_yin52"]
+[ext_resource type="Texture2D" path="res://Assets/Cards/Card Name_ DragonLord - Card Type_ Pride.png" id="2_7iwus"]
+[ext_resource type="Texture2D" uid="uid://bbeai5rpq33e5" path="res://Assets/Cards/Card name_ Fireball - Card Type_ Pride.png" id="3_3f6ko"]
+[ext_resource type="Texture2D" uid="uid://ces63ypyr6ij3" path="res://Assets/Cards/Card Name_ Greedy Snake - Card Type_ Pride.png" id="4_00k35"]
+[ext_resource type="Texture2D" uid="uid://csdh3nutdc8bj" path="res://Assets/Cards/Card Name_ Guard Turtle - Card Type_ Pride.png" id="5_y3i70"]
+[ext_resource type="Texture2D" path="res://Assets/Cards/Card Name_ Iris - Card Type_ Pride.png" id="6_urmcb"]
+[ext_resource type="Texture2D" uid="uid://te3pltssdw4k" path="res://Assets/Cards/Card name_ Lava - Card type_ Pride.png" id="7_dwyp7"]
+[ext_resource type="Texture2D" path="res://Assets/Cards/Card Name_ Pendragon Iris - Card Type_ Pride.png" id="8_8unii"]
+[ext_resource type="Texture2D" uid="uid://stlsqbjrukb2" path="res://Assets/Cards/Card Name_ Prideful Hatchling - Card Type_ Pride.png" id="9_3u3ps"]
+[ext_resource type="Texture2D" uid="uid://6ujlqmbcml66" path="res://Assets/Cards/Card name_ Raging Dragon - Card type_ Pride.png" id="10_vwpsh"]
+[ext_resource type="Texture2D" uid="uid://1pd3amuqvm0g" path="res://Assets/Cards/Card Name_ Take Flight - Card Type_ Pride.png" id="11_54v4i"]
+[ext_resource type="Texture2D" path="res://Assets/Cards/Card Name_ Unknown - Card Type_ Pride.png" id="12_gfo3j"]
+
+[node name="Node2D" type="Node2D" unique_id=783405230]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=952494957]
+
+[node name="Area2D" type="Area2D" parent="Sprite2D" unique_id=603816897]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D" unique_id=817107982]
+
+[node name="CardNameBloodCardTypePride" type="Sprite2D" parent="Sprite2D" unique_id=442305903]
+position = Vector2(-343, 514)
+texture = ExtResource("1_yin52")
+
+[node name="CardNameDragonLordCardTypePride" type="Sprite2D" parent="Sprite2D" unique_id=1664492505]
+position = Vector2(-187, 497)
+texture = ExtResource("2_7iwus")
+
+[node name="CardNameFireballCardTypePride" type="Sprite2D" parent="Sprite2D" unique_id=1679884862]
+position = Vector2(-403, 622)
+texture = ExtResource("3_3f6ko")
+
+[node name="CardNameGreedySnakeCardTypePride" type="Sprite2D" parent="Sprite2D" unique_id=2142063760]
+position = Vector2(-199, 640)
+texture = ExtResource("4_00k35")
+
+[node name="CardNameGuardTurtleCardTypePride" type="Sprite2D" parent="Sprite2D" unique_id=481403171]
+position = Vector2(-564, 832)
+texture = ExtResource("5_y3i70")
+
+[node name="CardNameIrisCardTypePride" type="Sprite2D" parent="Sprite2D" unique_id=1464686318]
+position = Vector2(-564, 1143)
+texture = ExtResource("6_urmcb")
+
+[node name="CardNameLavaCardTypePride" type="Sprite2D" parent="Sprite2D" unique_id=171862177]
+position = Vector2(-295, 1071)
+texture = ExtResource("7_dwyp7")
+
+[node name="CardNamePendragonIrisCardTypePride" type="Sprite2D" parent="Sprite2D" unique_id=9026887]
+position = Vector2(-127, 832)
+texture = ExtResource("8_8unii")
+
+[node name="CardNamePridefulHatchlingCardTypePride" type="Sprite2D" parent="Sprite2D" unique_id=703765852]
+position = Vector2(-409, 1209)
+texture = ExtResource("9_3u3ps")
+
+[node name="CardNameRagingDragonCardTypePride" type="Sprite2D" parent="Sprite2D" unique_id=1399121310]
+position = Vector2(-750, 760)
+texture = ExtResource("10_vwpsh")
+
+[node name="CardNameTakeFlightCardTypePride" type="Sprite2D" parent="Sprite2D" unique_id=584905674]
+position = Vector2(-421, 820)
+texture = ExtResource("11_54v4i")
+
+[node name="CardNameUnknownCardTypePride" type="Sprite2D" parent="Sprite2D" unique_id=1996069303]
+position = Vector2(-768, 1083)
+texture = ExtResource("12_gfo3j")
