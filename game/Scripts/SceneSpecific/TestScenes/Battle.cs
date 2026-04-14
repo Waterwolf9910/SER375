@@ -112,7 +112,7 @@ public partial class Battle : Node {
         if (card!.hp > 0 && player_card) {
             print($"Selected [color=green]{card.name}[/color]");
             selected_card = card;
-        } else {
+        } else if (!player_card) {
             print($"Unable to select [color=gray]{card.name}[/color]");
         }
 
@@ -169,7 +169,7 @@ public partial class Battle : Node {
         var results = attacking_card.FlipAndApply(player_target);
         print($"[color=red]NPC[/color] attacked [color=green]{player_target.name}[/color] with [color=red]{attacking_card.name}[/color]");
         for (int i = 0; i < results.Count; ++i) {
-            print($"    [{attacking_card.name} - Coin {i+1}]: {(results[i].isHeads ? "Heads" : "Tails")} - {results[i].effect.type} ({results[i].effect.value})");
+            print($"    [[color=yellow]{attacking_card.name}[/color] - Coin {i+1}]: {(results[i].isHeads ? "Heads" : "Tails")} - {results[i].effect.type} ({results[i].effect.value})");
         }
         print($"    Card Health {attacking_card.hp}/{attacking_card.max_hp}");
 
