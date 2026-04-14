@@ -4,7 +4,7 @@ using System.Linq;
 
 public partial class RyansTestScene : Node2D {
 
-    private PackedScene battle {get;} = ResourceLoader.Load<PackedScene>("res://Scenes/TestScenes/battle.tscn");
+    private PackedScene battle {get;} = ResourceLoader.Load<PackedScene>("res://Scenes/Test Scenes/battle.tscn");
     private PackedScene player_scene {get;} = ResourceLoader.Load<PackedScene>("res://Nodes/Entities/test_player.tscn");
     
     // MultiplayerSpawner spawner;
@@ -27,7 +27,12 @@ public partial class RyansTestScene : Node2D {
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta) {
-        if (Input.IsKeyPressed(Key.B)) {
+    }
+
+    public override void _UnhandledKeyInput(InputEvent _event) {
+        var @event = (InputEventKey) _event;
+        base._UnhandledKeyInput(@event);
+        if (!@event.Echo && @event.Keycode == Key.B && @event.Pressed) {
             GD.PrintS("hi");
             MultiplayerManager.INSTANCE.RpcId(1,
                 MultiplayerManager.MethodName.setupBattle,
@@ -35,6 +40,7 @@ public partial class RyansTestScene : Node2D {
             );
         }
     }
+
     public void addPlayer(long id) {
         // if (!this.Multiplayer.IsServer()) {
         //     return;

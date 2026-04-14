@@ -55,6 +55,7 @@ frames = SubResource("SpriteFrames_es10s")
 border = SubResource("Texture2D_72yym")
 max_hp = 100.0
 hp = 100.0
+max_bonus_attack = 10.0
 current_defense = 15.0
 max_defense = 15.0
 metadata/_custom_type_script = "uid://cb5fejxbatbuj"

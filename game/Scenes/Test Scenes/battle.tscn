@@ -1,20 +1,29 @@
-[gd_scene format=3 uid="uid://cd40jichnchwf"]
+[gd_scene format=3 uid="uid://bamd882dcf52i"]
 
-[ext_resource type="Script" path="res://Scripts/SceneSpecific/TestScenes/Battle.cs" id="1_euu30"]
-[ext_resource type="Texture2D" uid="uid://c75s2hn0p7v57" path="res://Assets/Combat/concept.png" id="1_ncae4"]
-[ext_resource type="PackedScene" path="res://Nodes/UI/Components/active_deck.tscn" id="2_kkpjb"]
+[ext_resource type="Script" uid="uid://mgbsii7n8miv" path="res://Scripts/SceneSpecific/TestScenes/Battle.cs" id="1_euu30"]
+[ext_resource type="PackedScene" uid="uid://c85rl6vy7b8x2" path="res://Nodes/UI/Components/active_deck.tscn" id="2_kkpjb"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kkpjb"]
-texture = ExtResource("1_ncae4")
 
-[node name="Node2D" type="Node2D" unique_id=1495620283 node_paths=PackedStringArray("player1_ad", "player2_ad")]
+[node name="Control" type="Node2D" unique_id=627195939 node_paths=PackedStringArray("p1_ad", "p2_ad", "status")]
+position = Vector2(2, 0)
 script = ExtResource("1_euu30")
-player1_ad = NodePath("CanvasLayer/PanelContainer/VBoxContainer/ActiveDeck2")
-player2_ad = NodePath("CanvasLayer/PanelContainer/VBoxContainer/ActiveDeck")
+p1_ad = NodePath("CanvasLayer/Control/PanelContainer/VBoxContainer/Player")
+p2_ad = NodePath("CanvasLayer/Control/PanelContainer/VBoxContainer/Enemy")
+status = NodePath("CanvasLayer/Control/PanelContainer2/MarginContainer/Status")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=517955702]
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer" unique_id=1003635511]
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=925289053]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control" unique_id=1003635511]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -22,19 +31,39 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_kkpjb")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer" unique_id=24951263]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/PanelContainer" unique_id=24951263]
 layout_mode = 2
 
-[node name="ActiveDeck" parent="CanvasLayer/PanelContainer/VBoxContainer" unique_id=2132347446 instance=ExtResource("2_kkpjb")]
+[node name="Enemy" parent="CanvasLayer/Control/PanelContainer/VBoxContainer" unique_id=2132347446 instance=ExtResource("2_kkpjb")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 
-[node name="ActiveDeck2" parent="CanvasLayer/PanelContainer/VBoxContainer" unique_id=1046149995 instance=ExtResource("2_kkpjb")]
+[node name="Player" parent="CanvasLayer/Control/PanelContainer/VBoxContainer" unique_id=1046149995 instance=ExtResource("2_kkpjb")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 is_top = true
 
-[node name="Camera2D" type="Camera2D" parent="CanvasLayer" unique_id=384051731]
-position = Vector2(943, 538)
+[node name="PanelContainer2" type="PanelContainer" parent="CanvasLayer/Control" unique_id=1034118420]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -144.0
+offset_right = 445.0
+offset_bottom = 144.0
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/PanelContainer2" unique_id=1568364914]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 8
+
+[node name="Status" type="RichTextLabel" parent="CanvasLayer/Control/PanelContainer2/MarginContainer" unique_id=1665493165]
+layout_mode = 2
+theme_override_colors/default_color = Color(4.9093364e-06, 0.65286523, 0.65286505, 1)
+bbcode_enabled = true
+scroll_following = true

@@ -1718,7 +1718,7 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dwbse"]
 
 [node name="World" type="Node2D" unique_id=271241442]
-position = Vector2(6, 8)
+position = Vector2(6, 9)
 
 [node name="TileMap" type="TileMap" parent="." unique_id=1243138560]
 tile_set = SubResource("TileSet_tlwt5")

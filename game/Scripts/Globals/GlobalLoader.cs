@@ -55,7 +55,7 @@ public partial class GlobalLoader : Node {
             }
         }
         foreach (string dir in card_folder.GetDirectories()) {
-            DirAccess access = DirAccess.Open(dir);
+            DirAccess access = DirAccess.Open(prev_path + '/' + dir);
             if (access == null) {
                 continue;
             }

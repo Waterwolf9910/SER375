@@ -145,12 +145,16 @@ public partial class MultiplayerManager : Node {
         }
         GD.Print($"Peer {id} connected");
         EmitSignal(SignalName.player_connected, id);
+        var peers = this.scene_multiplayer.GetPeers();
+        this.CallDeferred(MethodName.RpcId, id, MethodName.syncPlayers, players);
+        // this.RpcId(id, MethodName.syncPlayers, players);
     }
 
     private void onClientRemoved(long id) {
         players.Remove(id);
         GD.Print($"Client {id} disconnected");
         EmitSignal(SignalName.player_disconnected, id);
+        this.RpcId(id, MethodName.removePlayer, players);
     }
 
     private void onDisconnectedFromServer(long id) {
@@ -158,7 +162,7 @@ public partial class MultiplayerManager : Node {
     }
 
     private void onConnectedToServer() {
-        GD.Print($"Connected to server! ({this.scene_multiplayer.GetUniqueId()})");
+        GD.Print($"Connected to server! (as {this.scene_multiplayer.GetUniqueId()})");
         EmitSignalconnected();
         //todo: set player name and some other info via setting
         PlayerInfo player_info = new ();
@@ -224,7 +228,7 @@ public partial class MultiplayerManager : Node {
         this.RpcId(info2.peer_id, RyansTestScene.MethodName.startBattle, p2_first ? info2.peer_id : info.peer_id);
     }
 
-    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = false)]
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = false, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
     public void syncPlayers(Dictionary<long, PlayerInfo> players) { //server -> clients
         if (this.get_rpc_caller != 1) {
             return;
@@ -232,12 +236,20 @@ public partial class MultiplayerManager : Node {
         MultiplayerManager.players = players;
     }
 
-    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = false, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
     public void addPlayer(PlayerInfo info) { // server -> clients
         if (this.get_rpc_caller != 1) {
             return;
         }
         players.Add(info.peer_id, info);
+    }
+
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = false, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
+    public void removePlayer(long id) { // server -> clients
+        if (this.get_rpc_caller != 1) {
+            return;
+        }
+        players.Remove(id);
     }
 
 

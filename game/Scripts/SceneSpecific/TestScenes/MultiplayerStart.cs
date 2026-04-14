@@ -75,9 +75,9 @@ public static class Extensions {
         MultiplayerStart.MULTIPLAYER_INSTANCE.current_scene?.QueueFree();
         
         instantiated_scene.Name = "@Scene@";
+        MultiplayerStart.MULTIPLAYER_INSTANCE.scene_folder.AddChild(instantiated_scene);
         instantiated_scene.Owner = MultiplayerStart.MULTIPLAYER_INSTANCE.scene_folder;
         MultiplayerStart.MULTIPLAYER_INSTANCE.spawner.SpawnPath = instantiated_scene.GetPath();
-        MultiplayerStart.MULTIPLAYER_INSTANCE.scene_folder.AddChild(instantiated_scene);
         MultiplayerStart.MULTIPLAYER_INSTANCE.current_scene = instantiated_scene;
         return instantiated_scene;
     }

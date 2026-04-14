@@ -41,5 +41,7 @@ frames = SubResource("SpriteFrames_m8hbk")
 border = ExtResource("1_pgilo")
 max_hp = 35.0
 hp = 35.0
+max_bonus_attack = 10.0
 current_defense = 7.0
+max_defense = 14.0
 metadata/_custom_type_script = "uid://cb5fejxbatbuj"
