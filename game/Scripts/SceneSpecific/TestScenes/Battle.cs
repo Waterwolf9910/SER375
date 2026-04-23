@@ -34,7 +34,7 @@ public partial class Battle : Node {
         }
 
         if (this.p1_alive.Count < 1 && this.p2_alive.Count > 1) {
-            this.GetTree().ChangeSceneToFile("res://Scenes/MainMenu.tscn");
+            this.GetTree().ChangeSceneToFile("res://Scenes/Main Menu.tscn");
             return;
         }
         handleTurn();

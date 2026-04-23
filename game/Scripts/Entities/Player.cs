@@ -14,53 +14,50 @@ public partial class Player : CharacterBody2D {
     }
 
     public override void _Process(double delta) {
-        handleMovement(delta);
-
+        if (Velocity.X > 0) {
+            this.sprite.Animation = "Right";
+        } else if (Velocity.X < 0) {
+            this.sprite.Animation = "Left";
+        } else if (Velocity.Y < 0) {
+            this.sprite.Animation = "Back";
+        } else if (Velocity.Y > 0) {
+            this.sprite.Animation = "Front";
+        }
         if (Input.IsActionJustPressed("Interact") && current_enemy != null) {
             startBattle();
         }
     }
 
+    public override void _PhysicsProcess(double delta) {
+        handleMovement(delta);
+    }
+
     public void handleMovement(double delta) {
-        var velocity = Vector2.Zero; // The player's movement vector.
+        var velocity = Velocity; // The player's movement vector.
 
-        if (Input.IsActionPressed("Right")) {
-            velocity.X += 1;
-        }
-
-        if (Input.IsActionPressed("Left")) {
-            velocity.X -= 1;
-        }
-
-        if (Input.IsActionPressed("Down")) {
-            velocity.Y += 1;
-        }
-
-        if (Input.IsActionPressed("Up")) {
-            velocity.Y -= 1;
+        Vector2 direction = Input.GetVector("Left", "Right", "Up", "Down");
+        if (direction != Vector2.Zero) {
+            velocity.X = direction.X * Speed;
+            velocity.Y = direction.Y * Speed;
+        } else {
+            velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+            velocity.Y = Mathf.MoveToward(Velocity.Y, 0, Speed);
         }
 
         if (velocity.Length() > 0) {
-            velocity = velocity.Normalized() * Speed;
+            // velocity = velocity.Normalized() * Speed;
             this.sprite.Play();
         } else {
             this.sprite.Stop();
         }
-        Position += velocity * (float) delta;
-        Position = new Vector2(
-            x: Mathf.Clamp(Position.X, 0, ScreenSize.X),
-            y: Mathf.Clamp(Position.Y, 0, ScreenSize.Y)
-        );
-        if (velocity.X > 0) {
-            this.sprite.Animation = "Right";
-        } else if (velocity.X < 0) {
-            this.sprite.Animation = "Left";
-        } else if (velocity.Y < 0) {
-            this.sprite.Animation = "Back";
-        } else if (velocity.Y > 0) {
-            this.sprite.Animation = "Front";
-        }
+        // Position += velocity * (float) delta;
+        // Position = new Vector2(
+        //     x: Mathf.Clamp(Position.X, 0, ScreenSize.X),
+        //     y: Mathf.Clamp(Position.Y, 0, ScreenSize.Y)
+        // );
 
+        this.Velocity = velocity;
+        this.MoveAndSlide();
     }
 
     [Export]

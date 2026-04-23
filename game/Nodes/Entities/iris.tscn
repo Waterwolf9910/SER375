@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dgieulp8u4ojh"]
+[gd_scene format=3 uid="uid://d3vxj2o3g14w7"]
 
 [ext_resource type="Script" uid="uid://bt0yxrglcs8y6" path="res://Scripts/Entities/Player.cs" id="1_0q88c"]
 [ext_resource type="Resource" uid="uid://7cnlkhvvqwd7" path="res://Resources/PreCreatedDecks/DefaultPride.tres" id="2_r0y5y"]
@@ -119,10 +119,8 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_036b0"]
 
 [node name="Iris" type="CharacterBody2D" unique_id=1921743484 node_paths=PackedStringArray("sprite")]
-collision_layer = 3
-collision_mask = 3
-platform_floor_layers = 4294967127
-platform_wall_layers = 2
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("1_0q88c")
 sprite = NodePath("IrisSprite")
 deck = ExtResource("2_r0y5y")
@@ -139,6 +137,8 @@ sprite_frames = SubResource("SpriteFrames_036b0")
 animation = &"Right"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=932240369]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=850780709]
 shape = SubResource("CapsuleShape2D_036b0")
