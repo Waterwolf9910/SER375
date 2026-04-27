@@ -1,18 +1,23 @@
 [gd_scene format=3 uid="uid://c8diu7m1q1jm6"]
 
 [ext_resource type="Texture2D" uid="uid://1y74l8y0wno7" path="res://Assets/Portraits/portraittest.png" id="1_ciyyn"]
+[ext_resource type="Script" uid="uid://dyndw8xgnjoly" path="res://Scripts/UI/Dialogue.cs" id="1_mw2d6"]
 
 [node name="Node2D" type="Node2D" unique_id=1784703552]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1774784529]
 
-[node name="Control" type="Control" parent="CanvasLayer" unique_id=1391552626]
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1391552626 node_paths=PackedStringArray("Portrait", "DialogueText", "CharacterName")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_mw2d6")
+Portrait = NodePath("Portrait")
+DialogueText = NodePath("TextBG/Dialogue")
+CharacterName = NodePath("NameBG/CharacterName")
 
 [node name="Portrait" type="Sprite2D" parent="CanvasLayer/Control" unique_id=126556694]
 unique_name_in_owner = true
