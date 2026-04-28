@@ -1,12 +1,17 @@
 [gd_scene format=3 uid="uid://c8diu7m1q1jm6"]
 
 [ext_resource type="Texture2D" uid="uid://1y74l8y0wno7" path="res://Assets/Portraits/portraittest.png" id="1_ciyyn"]
+[ext_resource type="Script" uid="uid://dyndw8xgnjoly" path="res://Scripts/UI/Dialogue.cs" id="1_mw2d6"]
 
-[node name="Node2D" type="Node2D" unique_id=1784703552]
+[node name="Dialogue" type="CanvasLayer" unique_id=906927109 node_paths=PackedStringArray("Portrait", "DialogueText", "CharacterName")]
+layer = 2
+visible = false
+script = ExtResource("1_mw2d6")
+Portrait = NodePath("Control/Portrait")
+DialogueText = NodePath("Control/TextBG/Dialogue")
+CharacterName = NodePath("Control/NameBG/CharacterName")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1774784529]
-
-[node name="Control" type="Control" parent="CanvasLayer" unique_id=1391552626]
+[node name="Control" type="Control" parent="." unique_id=1391552626]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,13 +19,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Portrait" type="Sprite2D" parent="CanvasLayer/Control" unique_id=126556694]
-unique_name_in_owner = true
-position = Vector2(240, 710)
-scale = Vector2(2, 2.147)
+[node name="Portrait" type="TextureRect" parent="Control" unique_id=1331951131]
+layout_mode = 0
+offset_top = 448.0
+offset_right = 482.0
+offset_bottom = 930.0
 texture = ExtResource("1_ciyyn")
+stretch_mode = 6
 
-[node name="TextBG" type="ColorRect" parent="CanvasLayer/Control" unique_id=134582187]
+[node name="TextBG" type="ColorRect" parent="Control" unique_id=134582187]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.0
@@ -35,7 +42,7 @@ size_flags_vertical = 2
 tooltip_text = "
 "
 
-[node name="Dialogue" type="Label" parent="CanvasLayer/Control/TextBG" unique_id=424358481]
+[node name="Dialogue" type="Label" parent="Control/TextBG" unique_id=424358481]
 layout_mode = 0
 offset_left = 11.0
 offset_top = 11.0
@@ -45,7 +52,7 @@ theme_override_colors/font_color = Color(0.031498976, 0.013450078, 0.002979292, 
 theme_override_font_sizes/font_size = 30
 text = "*Character Text Here*"
 
-[node name="NameBG" type="ColorRect" parent="CanvasLayer/Control" unique_id=333860662]
+[node name="NameBG" type="ColorRect" parent="Control" unique_id=333860662]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.0
@@ -58,7 +65,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.6766525, 0.58388287, 0.34869835, 1)
 
-[node name="CharacterName" type="Label" parent="CanvasLayer/Control/NameBG" unique_id=908294049]
+[node name="CharacterName" type="Label" parent="Control/NameBG" unique_id=908294049]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0

@@ -1,0 +1,147 @@
+[gd_scene format=3 uid="uid://d3vxj2o3g14w7"]
+
+[ext_resource type="Script" uid="uid://bt0yxrglcs8y6" path="res://Scripts/Entities/Player.cs" id="1_0q88c"]
+[ext_resource type="Resource" uid="uid://7cnlkhvvqwd7" path="res://Resources/PreCreatedDecks/DefaultPride.tres" id="2_r0y5y"]
+[ext_resource type="Texture2D" uid="uid://cdk4qjo3hxujy" path="res://Assets/Sprites/Iris_Sprites_2.png" id="3_tfd1m"]
+[ext_resource type="Texture2D" uid="uid://difcp7kln7fgi" path="res://Assets/Sprites/Iris_Sprites.png" id="4_ullom"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pkg7o"]
+radius = 9.0
+height = 27.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_036b0"]
+atlas = ExtResource("3_tfd1m")
+region = Rect2(105, 0, 34, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwbse"]
+atlas = ExtResource("3_tfd1m")
+region = Rect2(140, 0, 34, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pkg7o"]
+atlas = ExtResource("3_tfd1m")
+region = Rect2(175, 0, 34, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gbfbk"]
+atlas = ExtResource("4_ullom")
+region = Rect2(210, 0, 34, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ioo17"]
+atlas = ExtResource("4_ullom")
+region = Rect2(245, 0, 34, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wse8f"]
+atlas = ExtResource("4_ullom")
+region = Rect2(280, 0, 34, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ic0uy"]
+atlas = ExtResource("4_ullom")
+region = Rect2(105, 0, 34, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3n1d"]
+atlas = ExtResource("4_ullom")
+region = Rect2(140, 0, 34, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2o6r5"]
+atlas = ExtResource("4_ullom")
+region = Rect2(175, 0, 34, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70uel"]
+atlas = ExtResource("4_ullom")
+region = Rect2(0, 0, 34, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hiqwa"]
+atlas = ExtResource("4_ullom")
+region = Rect2(35, 0, 34, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2u3nc"]
+atlas = ExtResource("4_ullom")
+region = Rect2(70, 0, 34, 25)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_036b0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_036b0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwbse")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pkg7o")
+}],
+"loop": true,
+"name": &"Back",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gbfbk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ioo17")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wse8f")
+}],
+"loop": true,
+"name": &"Front",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ic0uy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3n1d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2o6r5")
+}],
+"loop": true,
+"name": &"Left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_70uel")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hiqwa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2u3nc")
+}],
+"loop": true,
+"name": &"Right",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_036b0"]
+
+[node name="Iris" type="CharacterBody2D" unique_id=1921743484 node_paths=PackedStringArray("sprite")]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_0q88c")
+sprite = NodePath("IrisSprite")
+deck = ExtResource("2_r0y5y")
+Speed = 150
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2018758213]
+shape = SubResource("CapsuleShape2D_pkg7o")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=828678772]
+zoom = Vector2(3, 3)
+
+[node name="IrisSprite" type="AnimatedSprite2D" parent="." unique_id=1589906181]
+sprite_frames = SubResource("SpriteFrames_036b0")
+animation = &"Right"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=932240369]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=850780709]
+shape = SubResource("CapsuleShape2D_036b0")
+
+[connection signal="area_entered" from="Area2D" to="." method="OnAreaEntered"]
+[connection signal="area_exited" from="Area2D" to="." method="OnAreaExited"]

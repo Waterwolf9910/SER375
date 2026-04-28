@@ -1,0 +1,53 @@
+[gd_resource type="Resource" script_class="Card" format=3 uid="uid://dlpcawise2f21"]
+
+[ext_resource type="Script" uid="uid://desxxqjimgrh2" path="res://Scripts/Gameplay/CardEffects/CardEffect.cs" id="1_do83q"]
+[ext_resource type="Script" uid="uid://rvypnckvaifh" path="res://Scripts/Gameplay/CardActions/TrueDamage.cs" id="2_4ntaj"]
+[ext_resource type="Script" uid="uid://cb5fejxbatbuj" path="res://Scripts/Resources/Card.cs" id="2_m5ils"]
+
+[sub_resource type="Texture2D" id="Texture2D_4ntaj"]
+resource_local_to_scene = false
+resource_name = ""
+
+[sub_resource type="Resource" id="Resource_6gv8x"]
+script = ExtResource("1_do83q")
+value = 10.0
+element = 16
+metadata/_custom_type_script = "uid://desxxqjimgrh2"
+
+[sub_resource type="Resource" id="Resource_4ov1r"]
+script = ExtResource("1_do83q")
+custom_action_script = ExtResource("2_4ntaj")
+custom_args = Dictionary[String, Variant]({
+"amount": 5.0
+})
+metadata/_custom_type_script = "uid://desxxqjimgrh2"
+
+[sub_resource type="Resource" id="Resource_ru34w"]
+script = ExtResource("1_do83q")
+value = 10.0
+element = 16
+metadata/_custom_type_script = "uid://desxxqjimgrh2"
+
+[sub_resource type="Resource" id="Resource_ao77o"]
+script = ExtResource("1_do83q")
+type = 3
+value = 3.0
+element = 16
+metadata/_custom_type_script = "uid://desxxqjimgrh2"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6gv8x"]
+
+[resource]
+script = ExtResource("2_m5ils")
+id = "drago"
+name = "Drago"
+coinEffects = Array[ExtResource("1_do83q")]([SubResource("Resource_6gv8x"), SubResource("Resource_4ov1r"), SubResource("Resource_ru34w"), SubResource("Resource_ao77o")])
+frames = SubResource("SpriteFrames_6gv8x")
+border = SubResource("Texture2D_4ntaj")
+max_hp = 70.0
+hp = 70.0
+bonus_attack = 10.0
+max_bonus_attack = 10.0
+current_defense = 8.0
+max_defense = 16.0
+metadata/_custom_type_script = "uid://cb5fejxbatbuj"

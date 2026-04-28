@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dhp6c0dkif6sm"]
+
+[ext_resource type="Texture2D" uid="uid://bkfpc5ipp4gt4" path="res://Assets/Sprites/Iris_Sprite.png" id="1_w8j7k"]
+[ext_resource type="Script" uid="uid://kpj3hwvpl0tn" path="res://Scripts/Entities/NPC.cs" id="2_xjkt7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dwbse"]
+
+[node name="NPC" type="Sprite2D" unique_id=2115791530]
+texture = ExtResource("1_w8j7k")
+script = ExtResource("2_xjkt7")
+metadata/_edit_lock_ = true
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1710233029]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1449900546]
+shape = SubResource("CapsuleShape2D_dwbse")

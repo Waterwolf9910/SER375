@@ -15,6 +15,16 @@
             "preLaunchTask": "Build Solution"
         },
         {
+            "name": "Launch World",
+            "type": "coreclr",
+            "program": "godot-mono",
+            "args": "--path ${workspaceFolder} --debug-collisions --debug-paths --debug-navigation --debug-avoidance --remote-debug tcp://127.0.0.1 --no-header --scene \"res://Scenes/world.tscn\"",
+            "request": "launch",
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            "preLaunchTask": "Build Solution"
+        },
+        {
             "name": "Launch Ryan's Scene",
             "type": "coreclr",
             "program": "godot-mono",
@@ -34,6 +44,17 @@
             "console": "integratedTerminal",
             "preLaunchTask": "Build Solution",
             "suppressMultipleSessionWarning": true,
+        },
+        {
+            "name": "Launch Multiplayer Test (labeled 2)",
+            "type": "coreclr",
+            "program": "godot-mono",
+            "args": "--path ${workspaceFolder} --debug-collisions --debug-paths --debug-navigation --debug-avoidance --remote-debug tcp://127.0.0.1 --no-header --scene \"res://Scenes/Test Scenes/multiplayer_start.tscn\"",
+            "request": "launch",
+            "justMyCode": true,
+            "console": "integratedTerminal",
+            // "preLaunchTask": "Build Solution", // should be built after label
+            "suppressMultipleSessionWarning": true
         }
     ]
 }

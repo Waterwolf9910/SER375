@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class ModeMenu : PanelContainer {
+public partial class ModeMenu : Control {
     // Called when the node enters the scene tree for the first time.
     public override void _Ready() {
     }
@@ -14,7 +14,7 @@ public partial class ModeMenu : PanelContainer {
         this.GetTree().ChangeSceneToFile("res://Scenes/DeckMenu.tscn");
     }
     public void CampaignPressed() {
-        //this.GetTree().ChangeSceneToFile("res://Scenes/Campaign.tscn");
+        this.GetTree().ChangeSceneToFile("res://Scenes/world.tscn");
     }
     public void PvpPressed() {
         //this.GetTree().ChangeSceneToFile("res://Scenes/Pvp.tscn");

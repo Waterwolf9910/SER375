@@ -1,0 +1,55 @@
+[gd_resource type="Resource" script_class="Card" format=3 uid="uid://bgffffryn4gu4"]
+
+[ext_resource type="Script" uid="uid://desxxqjimgrh2" path="res://Scripts/Gameplay/CardEffects/CardEffect.cs" id="1_i7t2w"]
+[ext_resource type="Texture2D" uid="uid://bkfpc5ipp4gt4" path="res://Assets/Sprites/Iris_Sprite.png" id="2_ck0u1"]
+[ext_resource type="Script" uid="uid://cb5fejxbatbuj" path="res://Scripts/Resources/Card.cs" id="2_vj7vp"]
+
+[sub_resource type="Texture2D" id="Texture2D_72yym"]
+resource_local_to_scene = false
+resource_name = ""
+
+[sub_resource type="Resource" id="Resource_ck0u1"]
+script = ExtResource("1_i7t2w")
+value = 45.0
+element = 16
+metadata/_custom_type_script = "uid://desxxqjimgrh2"
+
+[sub_resource type="Resource" id="Resource_vs7t0"]
+script = ExtResource("1_i7t2w")
+type = 3
+value = 5.0
+element = 16
+selection = 0
+metadata/_custom_type_script = "uid://desxxqjimgrh2"
+
+[sub_resource type="Resource" id="Resource_6uyqb"]
+script = ExtResource("1_i7t2w")
+value = 45.0
+element = 16
+metadata/_custom_type_script = "uid://desxxqjimgrh2"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_es10s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ck0u1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("2_vj7vp")
+id = "iris.dragon_tamer"
+name = "Dragon Tamer Iris"
+coinEffects = Array[ExtResource("1_i7t2w")]([SubResource("Resource_ck0u1"), SubResource("Resource_vs7t0"), SubResource("Resource_6uyqb")])
+frames = SubResource("SpriteFrames_es10s")
+border = SubResource("Texture2D_72yym")
+max_hp = 100.0
+hp = 100.0
+bonus_attack = 10.0
+max_bonus_attack = 20.0
+current_defense = 15.0
+max_defense = 30.0
+metadata/_custom_type_script = "uid://cb5fejxbatbuj"

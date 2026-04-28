@@ -11,6 +11,7 @@ public partial class MainMenu : PanelContainer {
     }
 
     public void OnStartPressed() {
+        GD.PrintS("hi");
         this.GetTree().ChangeSceneToFile("res://Scenes/ModeMenu.tscn");
     }
 

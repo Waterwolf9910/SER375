@@ -1,17 +1,17 @@
 [gd_scene format=3 uid="uid://crt2i0lqpvup7"]
 
 [ext_resource type="Texture2D" uid="uid://b5vlcnyv0t128" path="res://Assets/Cards/Card Name_ Blood - Card Type_ Pride.png" id="1_yin52"]
-[ext_resource type="Texture2D" uid="uid://dy3bqkl1wcelw" path="res://Assets/Cards/Card Name_ DragonLord - Card Type_ Pride.png" id="2_7iwus"]
+[ext_resource type="Texture2D" path="res://Assets/Cards/Card Name_ DragonLord - Card Type_ Pride.png" id="2_7iwus"]
 [ext_resource type="Texture2D" uid="uid://bbeai5rpq33e5" path="res://Assets/Cards/Card name_ Fireball - Card Type_ Pride.png" id="3_3f6ko"]
 [ext_resource type="Texture2D" uid="uid://ces63ypyr6ij3" path="res://Assets/Cards/Card Name_ Greedy Snake - Card Type_ Pride.png" id="4_00k35"]
 [ext_resource type="Texture2D" uid="uid://csdh3nutdc8bj" path="res://Assets/Cards/Card Name_ Guard Turtle - Card Type_ Pride.png" id="5_y3i70"]
-[ext_resource type="Texture2D" uid="uid://tgq2ap2sts2n" path="res://Assets/Cards/Card Name_ Iris - Card Type_ Pride.png" id="6_urmcb"]
+[ext_resource type="Texture2D" path="res://Assets/Cards/Card Name_ Iris - Card Type_ Pride.png" id="6_urmcb"]
 [ext_resource type="Texture2D" uid="uid://te3pltssdw4k" path="res://Assets/Cards/Card name_ Lava - Card type_ Pride.png" id="7_dwyp7"]
-[ext_resource type="Texture2D" uid="uid://cr5ub2umd0nl1" path="res://Assets/Cards/Card Name_ Pendragon Iris - Card Type_ Pride.png" id="8_8unii"]
+[ext_resource type="Texture2D" path="res://Assets/Cards/Card Name_ Pendragon Iris - Card Type_ Pride.png" id="8_8unii"]
 [ext_resource type="Texture2D" uid="uid://stlsqbjrukb2" path="res://Assets/Cards/Card Name_ Prideful Hatchling - Card Type_ Pride.png" id="9_3u3ps"]
 [ext_resource type="Texture2D" uid="uid://6ujlqmbcml66" path="res://Assets/Cards/Card name_ Raging Dragon - Card type_ Pride.png" id="10_vwpsh"]
-[ext_resource type="Texture2D" uid="uid://cxdcwjn3ejdd5" path="res://Assets/Cards/Card Name_ Take Flight - Card Type_ Pride.png" id="11_54v4i"]
-[ext_resource type="Texture2D" uid="uid://dor16qawc72wl" path="res://Assets/Cards/Card Name_ Unknown - Card Type_ Pride.png" id="12_gfo3j"]
+[ext_resource type="Texture2D" uid="uid://1pd3amuqvm0g" path="res://Assets/Cards/Card Name_ Take Flight - Card Type_ Pride.png" id="11_54v4i"]
+[ext_resource type="Texture2D" path="res://Assets/Cards/Card Name_ Unknown - Card Type_ Pride.png" id="12_gfo3j"]
 
 [node name="Node2D" type="Node2D" unique_id=783405230]
 

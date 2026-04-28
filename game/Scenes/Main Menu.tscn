@@ -1,37 +1,14 @@
 [gd_scene format=3 uid="uid://b8umvly5stvjn"]
 
 [ext_resource type="Script" uid="uid://cek3ctrk6y7g2" path="res://Scripts/UI/MainMenu.cs" id="1_totuj"]
-[ext_resource type="Texture2D" uid="uid://b5vlcnyv0t128" path="res://Assets/Cards/Card Name_ Blood - Card Type_ Pride.png" id="2_hcxxy"]
-[ext_resource type="Texture2D" uid="uid://bbeai5rpq33e5" path="res://Assets/Cards/Card name_ Fireball - Card Type_ Pride.png" id="3_4lp62"]
-[ext_resource type="Texture2D" uid="uid://ces63ypyr6ij3" path="res://Assets/Cards/Card Name_ Greedy Snake - Card Type_ Pride.png" id="4_0vewo"]
-[ext_resource type="Texture2D" uid="uid://csdh3nutdc8bj" path="res://Assets/Cards/Card Name_ Guard Turtle - Card Type_ Pride.png" id="5_wib81"]
-[ext_resource type="Texture2D" uid="uid://te3pltssdw4k" path="res://Assets/Cards/Card name_ Lava - Card type_ Pride.png" id="6_tbdrc"]
-[ext_resource type="Texture2D" uid="uid://stlsqbjrukb2" path="res://Assets/Cards/Card Name_ Prideful Hatchling - Card Type_ Pride.png" id="7_vuees"]
-[ext_resource type="Texture2D" uid="uid://6ujlqmbcml66" path="res://Assets/Cards/Card name_ Raging Dragon - Card type_ Pride.png" id="8_3hb06"]
 
 [sub_resource type="Theme" id="Theme_7yr4w"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_7yr4w"]
-font_size = 24
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hcxxy"]
 
 [node name="Node2D" type="Node2D" unique_id=1646011784]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=341261646]
 
-[node name="Control" type="Control" parent="CanvasLayer" unique_id=1349904673]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="MainMenu" type="PanelContainer" parent="CanvasLayer/Control" unique_id=2027907483]
-layout_mode = 1
+[node name="MainMenu" type="PanelContainer" parent="CanvasLayer" unique_id=2027907483]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -39,100 +16,66 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_totuj")
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control/MainMenu" unique_id=536695946]
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/MainMenu" unique_id=536695946]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/MainMenu/PanelContainer" unique_id=2122688116]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MainMenu/PanelContainer" unique_id=2122688116]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = SubResource("Theme_7yr4w")
-theme_override_constants/margin_left = 400
-theme_override_constants/margin_top = 400
-theme_override_constants/margin_right = 400
-theme_override_constants/margin_bottom = 400
+theme_override_constants/margin_left = 250
+theme_override_constants/margin_top = 250
+theme_override_constants/margin_right = 250
+theme_override_constants/margin_bottom = 250
 
-[node name="BoxContainer" type="BoxContainer" parent="CanvasLayer/Control/MainMenu/PanelContainer/MarginContainer" unique_id=678020512]
+[node name="BoxContainer" type="BoxContainer" parent="CanvasLayer/MainMenu/PanelContainer/MarginContainer" unique_id=678020512]
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
 theme_override_constants/separation = 13
 alignment = 1
 vertical = true
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/MainMenu/PanelContainer/MarginContainer/BoxContainer" unique_id=1562316816]
+[node name="Label" type="Label" parent="CanvasLayer/MainMenu/PanelContainer/MarginContainer/BoxContainer" unique_id=1562316816]
 layout_mode = 2
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 64
 text = "{Insert Game Name Here}!!!!!"
-label_settings = SubResource("LabelSettings_7yr4w")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="CanvasLayer/Control/MainMenu/PanelContainer/MarginContainer/BoxContainer" unique_id=1718971416]
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/MainMenu/PanelContainer/MarginContainer/BoxContainer" unique_id=1718971416]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 15
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/MainMenu/PanelContainer/MarginContainer/BoxContainer" unique_id=762509405]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MainMenu/PanelContainer/MarginContainer/BoxContainer" unique_id=762509405]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Start" type="Button" parent="CanvasLayer/Control/MainMenu/PanelContainer/MarginContainer/BoxContainer/VBoxContainer" unique_id=65450887]
+[node name="Start" type="Button" parent="CanvasLayer/MainMenu/PanelContainer/MarginContainer/BoxContainer/VBoxContainer" unique_id=65450887]
 layout_mode = 2
-text = "Start"
+theme_override_font_sizes/font_size = 48
+text = " Start "
 
-[node name="Saves" type="Button" parent="CanvasLayer/Control/MainMenu/PanelContainer/MarginContainer/BoxContainer/VBoxContainer" unique_id=2058496746]
+[node name="Saves" type="Button" parent="CanvasLayer/MainMenu/PanelContainer/MarginContainer/BoxContainer/VBoxContainer" unique_id=2058496746]
 layout_mode = 2
-text = "Saves"
+theme_override_font_sizes/font_size = 48
+text = " Saves "
 
-[node name="Settings" type="Button" parent="CanvasLayer/Control/MainMenu/PanelContainer/MarginContainer/BoxContainer/VBoxContainer" unique_id=1330985954]
+[node name="Settings" type="Button" parent="CanvasLayer/MainMenu/PanelContainer/MarginContainer/BoxContainer/VBoxContainer" unique_id=1330985954]
 layout_mode = 2
-text = "Settings"
+theme_override_font_sizes/font_size = 48
+text = " Settings "
 
-[node name="Exit" type="Button" parent="CanvasLayer/Control/MainMenu/PanelContainer/MarginContainer/BoxContainer/VBoxContainer" unique_id=953075876]
+[node name="Exit" type="Button" parent="CanvasLayer/MainMenu/PanelContainer/MarginContainer/BoxContainer/VBoxContainer" unique_id=953075876]
 layout_mode = 2
+theme_override_font_sizes/font_size = 48
 text = "Exit"
 
-[node name="Pride Deck" type="Sprite2D" parent="." unique_id=2140734464]
-
-[node name="Sprite2D" type="Sprite2D" parent="Pride Deck" unique_id=1150903103]
-
-[node name="Area2D" type="Area2D" parent="Pride Deck" unique_id=1684504295]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pride Deck/Area2D" unique_id=1856211677]
-shape = SubResource("RectangleShape2D_hcxxy")
-
-[node name="CardNameBloodCardTypePride" type="Sprite2D" parent="Pride Deck" unique_id=730708688]
-position = Vector2(297, 852)
-texture = ExtResource("2_hcxxy")
-
-[node name="CardNameFireballCardTypePride" type="Sprite2D" parent="Pride Deck" unique_id=1127428720]
-position = Vector2(241, 851)
-texture = ExtResource("3_4lp62")
-
-[node name="CardNameGreedySnakeCardTypePride" type="Sprite2D" parent="Pride Deck" unique_id=237797460]
-position = Vector2(176, 861)
-texture = ExtResource("4_0vewo")
-
-[node name="CardNameGuardTurtleCardTypePride" type="Sprite2D" parent="Pride Deck" unique_id=1884263166]
-position = Vector2(106, 887)
-texture = ExtResource("5_wib81")
-
-[node name="CardNameLavaCardTypePride" type="Sprite2D" parent="Pride Deck" unique_id=201801814]
-position = Vector2(179, 925)
-texture = ExtResource("6_tbdrc")
-
-[node name="CardNamePridefulHatchlingCardTypePride" type="Sprite2D" parent="Pride Deck" unique_id=358411133]
-position = Vector2(252, 937)
-texture = ExtResource("7_vuees")
-
-[node name="CardNameRagingDragonCardTypePride" type="Sprite2D" parent="Pride Deck" unique_id=1572274746]
-position = Vector2(104, 979)
-texture = ExtResource("8_3hb06")
-
-[connection signal="pressed" from="CanvasLayer/Control/MainMenu/PanelContainer/MarginContainer/BoxContainer/VBoxContainer/Start" to="CanvasLayer/Control/MainMenu" method="OnStartPressed"]
-[connection signal="pressed" from="CanvasLayer/Control/MainMenu/PanelContainer/MarginContainer/BoxContainer/VBoxContainer/Saves" to="CanvasLayer/Control/MainMenu" method="OnSavesPressed"]
-[connection signal="pressed" from="CanvasLayer/Control/MainMenu/PanelContainer/MarginContainer/BoxContainer/VBoxContainer/Settings" to="CanvasLayer/Control/MainMenu" method="OnSettingsPressed"]
-[connection signal="pressed" from="CanvasLayer/Control/MainMenu/PanelContainer/MarginContainer/BoxContainer/VBoxContainer/Exit" to="CanvasLayer/Control/MainMenu" method="OnExitPressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/PanelContainer/MarginContainer/BoxContainer/VBoxContainer/Start" to="CanvasLayer/MainMenu" method="OnStartPressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/PanelContainer/MarginContainer/BoxContainer/VBoxContainer/Saves" to="CanvasLayer/MainMenu" method="OnSavesPressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/PanelContainer/MarginContainer/BoxContainer/VBoxContainer/Settings" to="CanvasLayer/MainMenu" method="OnSettingsPressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/PanelContainer/MarginContainer/BoxContainer/VBoxContainer/Exit" to="CanvasLayer/MainMenu" method="OnExitPressed"]
