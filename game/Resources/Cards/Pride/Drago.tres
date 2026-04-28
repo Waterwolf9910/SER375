@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://desxxqjimgrh2" path="res://Scripts/Gameplay/CardEffects/CardEffect.cs" id="1_do83q"]
 [ext_resource type="Script" uid="uid://rvypnckvaifh" path="res://Scripts/Gameplay/CardActions/TrueDamage.cs" id="2_4ntaj"]
 [ext_resource type="Script" uid="uid://cb5fejxbatbuj" path="res://Scripts/Resources/Card.cs" id="2_m5ils"]
+[ext_resource type="Texture2D" uid="uid://bpn616glrhecm" path="res://Assets/Cards/Card Name_ Raging Dragon - Face Only - Card Type_ Pride.pixil.png" id="3_4ntaj"]
 
 [sub_resource type="Texture2D" id="Texture2D_4ntaj"]
 resource_local_to_scene = false
@@ -36,6 +37,15 @@ element = 16
 metadata/_custom_type_script = "uid://desxxqjimgrh2"
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6gv8x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_4ntaj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [resource]
 script = ExtResource("2_m5ils")
