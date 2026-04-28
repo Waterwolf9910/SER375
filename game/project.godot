@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 MultiplayerManager="*uid://crhjr3xf3try0"
 GlobalLoader="*uid://d1nj8v5oxmr7"
+Dialogue="*uid://c8diu7m1q1jm6"
 
 [display]
 
