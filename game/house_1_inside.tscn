@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cd00d6g6xa6ud"]
+
+[node name="House1Inside" type="Node2D" unique_id=695794663]
+
+[node name="TileMap" type="TileMap" parent="." unique_id=232331642]
+format = 2
