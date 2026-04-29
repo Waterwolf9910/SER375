@@ -2,10 +2,10 @@
 using Godot;
 using Godot.Collections;
 
-public partial class NPC : Node2D {
+public partial class NPC : Interactable {
 
 
-    [Export] public Dictionary<string, Variant> components = [];
+    // [Export] public Dictionary<string, Variant> components = [];
 
     
 }
