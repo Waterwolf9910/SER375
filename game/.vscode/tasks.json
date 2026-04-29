@@ -3,7 +3,13 @@
     "tasks": [
         {
             "label": "Build Solution",
-            "command": "godot-mono --build-solutions --quit --headless ${workspaceFolder}/project.godot",
+            "command": "godot-mono",
+            "args": [
+                "--build-solutions",
+                "--quit",
+                "--headless",
+                "${workspaceFolder}/project.godot",
+            ],
             "type": "shell",
             // "args": [],
             // "problemMatcher": [
@@ -12,7 +18,10 @@
             "presentation": {
                 "reveal": "always"
             },
-            "group": "build"
+            "group": "build",
+            "windows": {
+                "command": "${env:USERPROFILE}\\Downloads\\Godot_v4.6-stable_mono_win64\\Godot_v4.6-stable_mono_win64.exe"
+            },
         }
     ]
 }

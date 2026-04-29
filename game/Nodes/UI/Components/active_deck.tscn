@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://duwetfgenbaah" path="res://Scripts/UI/Components/ActiveDeck.cs" id="1_8goqa"]
 [ext_resource type="PackedScene" uid="uid://42hw7cwptft4" path="res://Nodes/UI/Components/CardComponent.tscn" id="1_14vfo"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8goqa"]
+size = Vector2(16.400003, 23.500008)
+
 [node name="ActiveDeck" type="VBoxContainer" unique_id=2132347446 node_paths=PackedStringArray("anti_hero_top", "anti_hero_bottom", "helpers")]
 script = ExtResource("1_8goqa")
 anti_hero_top = NodePath("AntiHeroTop")
@@ -13,6 +16,15 @@ helpers = [NodePath("HBoxContainer/CardComponent"), NodePath("HBoxContainer/Card
 visible = false
 layout_mode = 2
 
+[node name="Area2D" type="Area2D" parent="AntiHeroTop" unique_id=96894509]
+position = Vector2(18.000008, 17.000004)
+scale = Vector2(10, 10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AntiHeroTop/Area2D" unique_id=2057311010]
+position = Vector2(6.899999, 10.449995)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_8goqa")
+
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1641997081]
 layout_mode = 2
 size_flags_vertical = 3
@@ -22,11 +34,47 @@ alignment = 1
 [node name="CardComponent" parent="HBoxContainer" unique_id=2068955884 instance=ExtResource("1_14vfo")]
 layout_mode = 2
 
+[node name="Area2D" type="Area2D" parent="HBoxContainer/CardComponent" unique_id=608904426]
+position = Vector2(18.000008, 17.000004)
+scale = Vector2(10, 10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HBoxContainer/CardComponent/Area2D" unique_id=700867414]
+position = Vector2(6.899999, 10.449995)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_8goqa")
+
 [node name="CardComponent2" parent="HBoxContainer" unique_id=648571786 instance=ExtResource("1_14vfo")]
 layout_mode = 2
+
+[node name="Area2D" type="Area2D" parent="HBoxContainer/CardComponent2" unique_id=582523232]
+position = Vector2(17.99997, 17.000002)
+scale = Vector2(10, 10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HBoxContainer/CardComponent2/Area2D" unique_id=1358253986]
+position = Vector2(6.899999, 10.449995)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_8goqa")
 
 [node name="CardComponent3" parent="HBoxContainer" unique_id=1612044700 instance=ExtResource("1_14vfo")]
 layout_mode = 2
 
+[node name="Area2D" type="Area2D" parent="HBoxContainer/CardComponent3" unique_id=1398615261]
+position = Vector2(17.99997, 17.000002)
+scale = Vector2(10, 10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HBoxContainer/CardComponent3/Area2D" unique_id=806057989]
+position = Vector2(6.899999, 10.449995)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_8goqa")
+
 [node name="AntiHeroBottom" parent="." unique_id=1764189423 instance=ExtResource("1_14vfo")]
 layout_mode = 2
+
+[node name="Area2D" type="Area2D" parent="AntiHeroBottom" unique_id=1134136644]
+position = Vector2(17.99997, 17.000002)
+scale = Vector2(10, 10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AntiHeroBottom/Area2D" unique_id=1650633185]
+position = Vector2(6.899999, 10.449995)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_8goqa")

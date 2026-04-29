@@ -2,8 +2,8 @@ using Godot;
 
 [GlobalClass]
 public partial class ConversationMessage : Resource {
-    
-    [Export] public string image = "";
+
+    [Export] public Texture2D image = new();
 
     [Export] public string message = "";
 

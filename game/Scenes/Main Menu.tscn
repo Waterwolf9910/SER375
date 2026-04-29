@@ -41,7 +41,7 @@ vertical = true
 [node name="Label" type="Label" parent="CanvasLayer/MainMenu/PanelContainer/MarginContainer/BoxContainer" unique_id=1562316816]
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
-text = "{Insert Game Name Here}!!!!!"
+text = "Reject's Fortune"
 horizontal_alignment = 1
 vertical_alignment = 1
 

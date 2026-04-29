@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Conversation" format=3 uid="uid://c73eom8x15aox"]
+
+[ext_resource type="Script" uid="uid://c5ik32mvnpeit" path="res://Scripts/Resources/ConversationMessage.cs" id="1_7640x"]
+[ext_resource type="Texture2D" uid="uid://oi33fypl8lmt" path="res://Assets/Sprites/Malcom_Sprite.png" id="2_7640x"]
+[ext_resource type="Script" uid="uid://34gndysbd477" path="res://Scripts/Resources/Conversation.cs" id="3_q7ixy"]
+
+[sub_resource type="Resource" id="Resource_e8g6r"]
+script = ExtResource("1_7640x")
+image = ExtResource("2_7640x")
+message = "What is that guy doing?"
+character_name = "Malcolm"
+metadata/_custom_type_script = "uid://c5ik32mvnpeit"
+
+[resource]
+script = ExtResource("3_q7ixy")
+messages = Array[ExtResource("1_7640x")]([SubResource("Resource_e8g6r")])

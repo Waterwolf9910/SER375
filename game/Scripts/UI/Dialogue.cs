@@ -1,13 +1,15 @@
 using Godot;
 
 public partial class Dialogue : CanvasLayer {
-    #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
-    public static Dialogue INSTANCE { get; private set; }
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
+    public static Dialogue INSTANCE {
+        get; private set;
+    }
 
     [Export] public TextureRect Portrait;
     [Export] public Label DialogueText;
     [Export] public Label CharacterName;
-    #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
 
     [Signal]
     delegate void onDialogueEndEventHandler();
@@ -47,11 +49,12 @@ public partial class Dialogue : CanvasLayer {
             return;
         }
         var msg = this.current_conversation.messages[this.current_msg];
-        if (this.current_conversation.images.TryGetValue(msg.image, out var texture)) {
-            Portrait.Texture = texture;
-        } else {
-            Portrait.Texture = null;
-        }
+        // if (this.current_conversation.images.TryGetValue(msg.image, out var texture)) {
+        //     Portrait.Texture = texture;
+        // } else {
+        //     Portrait.Texture = null;
+        // }
+        Portrait.Texture = msg.image;
         this.CharacterName.Text = msg.character_name;
         this.DialogueText.Text = msg.message;
         this.current_msg++;

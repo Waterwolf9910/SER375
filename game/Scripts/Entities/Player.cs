@@ -16,6 +16,7 @@ public partial class Player : CharacterBody2D {
         ScreenSize = GetViewportRect().Size;
     }
 
+
     public override async void _Process(double delta) {
         if (in_interaction) {
             return;
@@ -97,34 +98,65 @@ public partial class Player : CharacterBody2D {
         var current_npc = this.current_npc;
         in_interaction = true;
 
-        Array<string> order = [];
+        // component name, raw name
+        System.Collections.Generic.List<System.Collections.Generic.KeyValuePair<string, string>> order = [];
 
         foreach (var component_name in current_npc.components.Keys) {
             var split = component_name.Split(".");
             var name = split[0];
             var modifiers = split[1..]; // TODO
-            
+
             if (modifiers.Length < 1) {
-                order.Add(component_name);
+                var indexes = order.Select((v, i) => new System.Collections.Generic.KeyValuePair<string, int>(v.Value, i));
+                var _obj = indexes.LastOrDefault(v => v.Key.Contains($"pre{name}"));
+                if (_obj.Key == null) {
+                    order.Add(new(name, component_name));
+                    continue;
+                }
+                order.Insert(_obj.Value, new(name, component_name));
+                continue;
+                // order.Add(component_name);
+            }
+
+            foreach (var modifier in modifiers) {
+                if (modifier.StartsWith("pre")) {
+                    var indexes = order.Select((v, i) => new System.Collections.Generic.KeyValuePair<string, int>(v.Value, i));
+                    var _obj = indexes.LastOrDefault(v => v.Key.Contains(name));
+                    if (order.Count == 0) {
+                        order.Add(new(name, component_name));
+                        continue;
+                    }
+                    order.Insert(_obj.Value, new(name, component_name));
+                } else if (modifier.StartsWith("post")) {
+                    var indexes = order.Select((v, i) => new System.Collections.Generic.KeyValuePair<string, int>(v.Value, i));
+                    var _obj = indexes.Last(v => v.Key.Contains(name));
+                    if (order.Count == 0) {
+                        order.Add(new(name, component_name));
+                        continue;
+                    }
+                    order.Insert(_obj.Value + 1, new(name, component_name));
+                }
             }
         }
 
         foreach (var component in order) {
-            if (component == "dialogue") {
-                var convo = current_npc.components[component].As<Conversation>();
+            if (component.Key == "dialogue") {
+                var convo = current_npc.components[component.Value].As<Conversation>();
                 Dialogue.INSTANCE.runDialogue(convo);
                 await ToSignal(Dialogue.INSTANCE, Dialogue.SignalName.onDialogueEnd);
-                
+
             }
-            if (component == "battle") {
+            if (component.Key == "battle") {
                 //TODO: Handle after battle events
                 //Battle Start Function Here
-                this.switchToBattle(this.deck, current_npc.components[component].As<Deck>());
+                this.switchToBattle(this.deck, current_npc.components[component.Value].As<Deck>());
                 GD.Print("Battle Started!");
             }
         }
 
-        in_interaction = false;
+        Callable.From(() => {
+            in_interaction = false;
+        }).CallDeferred();
 
     }
 }
