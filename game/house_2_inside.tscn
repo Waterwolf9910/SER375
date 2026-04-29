@@ -3,6 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://dnpmiw8n2bpf8" path="res://Assets/Sprites/PokemonLike.png" id="1_1kwga"]
 [ext_resource type="PackedScene" uid="uid://ceffltnbwgmos" path="res://Nodes/Map Objects/unpassable.tscn" id="2_tcgf3"]
 [ext_resource type="PackedScene" uid="uid://d3vxj2o3g14w7" path="res://Nodes/Entities/iris.tscn" id="3_ja7vx"]
+[ext_resource type="PackedScene" uid="uid://dhp6c0dkif6sm" path="res://Nodes/Entities/npc.tscn" id="4_dcund"]
+[ext_resource type="Texture2D" uid="uid://ce17bhtm6ydd7" path="res://Assets/Sprites/Lexi_Sprite.png" id="5_4h2t5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tcgf3"]
 texture = ExtResource("1_1kwga")
@@ -911,3 +913,7 @@ scale = Vector2(1, 11.440004)
 
 [node name="Iris" parent="." unique_id=1921743484 instance=ExtResource("3_ja7vx")]
 position = Vector2(841, 785)
+
+[node name="NPC" parent="." unique_id=2115791530 instance=ExtResource("4_dcund")]
+position = Vector2(904, 737)
+texture = ExtResource("5_4h2t5")

@@ -4,6 +4,10 @@ using System;
 [Tool]
 public partial class CardComponent : Control {
 
+    private static readonly Vector2 HoverScale = new Vector2(1.15f, 1.15f);
+    private static readonly Vector2 NormalScale = Vector2.One;
+    private const float TweenDuration = 0.15f;
+
     /// <summary>
     /// current animation frame
     /// </summary>
@@ -16,12 +20,13 @@ public partial class CardComponent : Control {
 
     [Export]
     public Card? _card;
-    public Card? card { get => _card; private set {
+    public Card? card {
+        get => _card; private set {
             _card = value;
         }
     }
 
-    #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
     [Export] private RichTextLabel _name;
     [Export] private RichTextLabel _description;
     [Export] private RichTextLabel _defense;
@@ -29,10 +34,10 @@ public partial class CardComponent : Control {
     [Export] private RichTextLabel _coins;
     [Export] private RichTextLabel _attack;
     [Export] private TextureRect _image;
-    #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
 
     // private bool _create_card = false;
-    
+
     // #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
     // public CardComponent() {
     // #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
@@ -52,7 +57,33 @@ public partial class CardComponent : Control {
         if (this.card != null) {
             this.card.Changed += UpdateCard;
         }
+
+        MouseEntered += OnMouseEntered;
+        MouseExited += OnMouseExited;
+        MouseFilter = MouseFilterEnum.Stop;
+
+        // Wait one frame so size is calculated before setting pivot
+        ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame).OnCompleted(() => {
+            PivotOffset = Size / 2;
+        });
         ready = true;
+    }
+
+    private void OnMouseEntered() {
+        ZIndex = 1;
+        ScaleCard(HoverScale);
+    }
+
+    private void OnMouseExited() {
+        ZIndex = 0;
+        ScaleCard(NormalScale);
+    }
+
+    private void ScaleCard(Vector2 targetScale) {
+        Tween tween = CreateTween();
+        tween.SetEase(Tween.EaseType.Out);
+        tween.SetTrans(Tween.TransitionType.Back);
+        tween.TweenProperty(this, "scale", targetScale, TweenDuration);
     }
 
     public void SetCard(Card? newCard) {
@@ -87,8 +118,8 @@ public partial class CardComponent : Control {
         this._attack.Text = $"+Attack: {this.card.bonus_attack}";
         this.frame_count += delta;
 
-        if ((this.frame_count * 30) >= (this.card.frames.GetAnimationSpeed(card_animation_name) * this.card.frames.GetFrameDuration(card_animation_name, this.current_frame))) {
-        // if ((this.frame_count / 15) >= (this.card.frames.GetAnimationSpeed(card_animation_name) * this.card.frames.GetFrameDuration(card_animation_name, this.current_frame))) {
+        if (( this.frame_count * 30 ) >= ( this.card.frames.GetAnimationSpeed(card_animation_name) * this.card.frames.GetFrameDuration(card_animation_name, this.current_frame) )) {
+            // if ((this.frame_count / 15) >= (this.card.frames.GetAnimationSpeed(card_animation_name) * this.card.frames.GetFrameDuration(card_animation_name, this.current_frame))) {
             // GD.PrintS(this.card.frames.GetAnimationSpeed(card_animation_name) * this.card.frames.GetFrameDuration(card_animation_name, this.current_frame))     ;
             this.frame_count = 0;
             this.current_frame++;
