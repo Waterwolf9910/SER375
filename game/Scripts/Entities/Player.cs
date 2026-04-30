@@ -16,7 +16,8 @@ public partial class Player : CharacterBody2D {
         ScreenSize = GetViewportRect().Size;
     }
 
-    public override async void _Process(double delta) {
+
+    public override void _Process(double delta) {
         if (in_interaction) {
             return;
         }
@@ -29,9 +30,9 @@ public partial class Player : CharacterBody2D {
         } else if (Velocity.Y > 0) {
             this.sprite.Animation = "Front";
         }
-        if (Input.IsActionJustPressed("Interact") && current_npc != null && !in_interaction) {
+        if (Input.IsActionJustPressed("Interact") && current_interactable != null && !in_interaction) {
             // await
-            _ = interactNPC();
+            _ = interact();
         }
     }
 
@@ -75,56 +76,104 @@ public partial class Player : CharacterBody2D {
 
     public Vector2 ScreenSize; // Size of the game window.
 
-    public NPC current_npc; // The enemy the player is currently battling, if any.
+    public Interactable current_interactable; // The enemy the player is currently battling, if any.
     // We also specified this function name in PascalCase in the editor's connection window.
     private void OnAreaEntered(Area2D body) {
-        if (body.GetParent() is NPC npc) {
-            current_npc = npc;
-            GD.Print("Entered area of " + npc.Name);
+        if (body.GetParent() is Interactable interactable) {
+            current_interactable = interactable;
+            GD.Print("Entered area of " + interactable.Name);
+            if (interactable.activate_on_touch) {
+                Callable.From(() => {
+                    _ = interact();
+                }).CallDeferred();
+            }
         }
     }
 
     private void OnAreaExited(Area2D body) {
-        if (body.GetParent() is NPC npc) {
-            current_npc = null;
-            GD.Print("Exited area of " + npc.Name);
+        if (body.GetParent() is Interactable interactable) {
+            current_interactable = null;
+            GD.Print("Exited area of " + interactable.Name);
         }
     }
 
     public bool in_interaction = false;
 
-    public async Task interactNPC() {
-        var current_npc = this.current_npc;
+    public async Task interact() {
         in_interaction = true;
 
-        Array<string> order = [];
+        // component name, raw name
+        System.Collections.Generic.List<System.Collections.Generic.KeyValuePair<string, string>> order = [];
 
-        foreach (var component_name in current_npc.components.Keys) {
+        foreach (var component_name in current_interactable.components.Keys) {
             var split = component_name.Split(".");
             var name = split[0];
             var modifiers = split[1..]; // TODO
-            
+
             if (modifiers.Length < 1) {
-                order.Add(component_name);
+                var indexes = order.Select((v, i) => new System.Collections.Generic.KeyValuePair<string, int>(v.Value, i));
+                var _obj = indexes.LastOrDefault(v => v.Key.Contains($"pre{name}"));
+                if (_obj.Key == null) {
+                    order.Add(new(name, component_name));
+                    continue;
+                }
+                order.Insert(_obj.Value, new(name, component_name));
+                continue;
+                // order.Add(component_name);
+            }
+
+            foreach (var modifier in modifiers) {
+                if (modifier.StartsWith("pre")) {
+                    var indexes = order.Select((v, i) => new System.Collections.Generic.KeyValuePair<string, int>(v.Value, i));
+                    var _obj = indexes.LastOrDefault(v => v.Key.Contains(name));
+                    if (order.Count == 0) {
+                        order.Add(new(name, component_name));
+                        continue;
+                    }
+                    order.Insert(_obj.Value, new(name, component_name));
+                } else if (modifier.StartsWith("post")) {
+                    var indexes = order.Select((v, i) => new System.Collections.Generic.KeyValuePair<string, int>(v.Value, i));
+                    var _obj = indexes.Last(v => v.Key.Contains(name));
+                    if (order.Count == 0) {
+                        order.Add(new(name, component_name));
+                        continue;
+                    }
+                    order.Insert(_obj.Value + 1, new(name, component_name));
+                }
             }
         }
 
         foreach (var component in order) {
-            if (component == "dialogue") {
-                var convo = current_npc.components[component].As<Conversation>();
-                Dialogue.INSTANCE.runDialogue(convo);
-                await ToSignal(Dialogue.INSTANCE, Dialogue.SignalName.onDialogueEnd);
-                
-            }
-            if (component == "battle") {
-                //TODO: Handle after battle events
-                //Battle Start Function Here
-                this.switchToBattle(this.deck, current_npc.components[component].As<Deck>());
-                GD.Print("Battle Started!");
+            switch (component.Key) {
+                case "dialogue": {
+                    var convo = current_interactable.components[component.Value].As<Conversation>();
+                    Dialogue.INSTANCE.runDialogue(convo);
+                    await ToSignal(Dialogue.INSTANCE, Dialogue.SignalName.onDialogueEnd);
+                    break;
+                }
+                case "battle": {
+                    //TODO: Handle after battle events
+                    //Battle Start Function Here
+                    this.switchToBattle(this.deck, current_interactable.components[component.Value].As<Deck>());
+                    GD.Print("Battle Started!");
+                    break;
+                }
+                case "travel": {
+                    var scene = current_interactable.components[component.Value].As<PackedScene>();
+                    current_interactable.components["travel-current"] = true;
+                    if (current_interactable.components.TryGetValue("travel-return_pos", out var return_pos)) {
+                        this.ChangeScene(scene, true, return_pos.As<Vector2>());
+                    } else {
+                        this.ChangeScene(scene, true);
+                    }
+                    break;
+                }
             }
         }
 
-        in_interaction = false;
+        Callable.From(() => {
+            in_interaction = false;
+        }).CallDeferred();
 
     }
 }

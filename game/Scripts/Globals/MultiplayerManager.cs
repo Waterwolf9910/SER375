@@ -70,7 +70,9 @@ public partial class MultiplayerManager : Node {
     }
 
     public void OnSceneChanged() {
-        this.GetTree().SetMultiplayer(this.scene_multiplayer, this.GetTree().CurrentScene.GetPath());
+        Callable.From(() => {
+            this.GetTree().SetMultiplayer(this.scene_multiplayer, this.GetTree().CurrentScene.GetPath());
+        }).CallDeferred();
     
         // if (!is_server) {
         //     this.setupClientSignals();

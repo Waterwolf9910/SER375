@@ -8,6 +8,9 @@
             "name": "Launch Game",
             "type": "coreclr",
             "program": "godot-mono",
+            "windows": {
+                "program": "${env:USERPROFILE}\\Downloads\\Godot_v4.6-stable_mono_win64\\Godot_v4.6-stable_mono_win64.exe"
+            },
             "args": "--path ${workspaceFolder} --debug-collisions --debug-paths --debug-navigation --debug-avoidance --remote-debug tcp://127.0.0.1 --no-header",
             "request": "launch",
             "justMyCode": true,
@@ -18,6 +21,9 @@
             "name": "Launch World",
             "type": "coreclr",
             "program": "godot-mono",
+            "windows": {
+                "program": "${env:USERPROFILE}\\Downloads\\Godot_v4.6-stable_mono_win64\\Godot_v4.6-stable_mono_win64.exe"
+            },
             "args": "--path ${workspaceFolder} --debug-collisions --debug-paths --debug-navigation --debug-avoidance --remote-debug tcp://127.0.0.1 --no-header --scene \"res://Scenes/world.tscn\"",
             "request": "launch",
             "justMyCode": true,

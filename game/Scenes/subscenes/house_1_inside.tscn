@@ -1,13 +1,11 @@
-[gd_scene format=3 uid="uid://cuhetbmfrb78j"]
+[gd_scene format=3 uid="uid://cd00d6g6xa6ud"]
 
-[ext_resource type="Texture2D" uid="uid://dnpmiw8n2bpf8" path="res://Assets/Sprites/PokemonLike.png" id="1_1kwga"]
-[ext_resource type="PackedScene" uid="uid://ceffltnbwgmos" path="res://Nodes/Map Objects/unpassable.tscn" id="2_tcgf3"]
-[ext_resource type="PackedScene" uid="uid://d3vxj2o3g14w7" path="res://Nodes/Entities/iris.tscn" id="3_ja7vx"]
-[ext_resource type="PackedScene" uid="uid://dhp6c0dkif6sm" path="res://Nodes/Entities/npc.tscn" id="4_dcund"]
-[ext_resource type="Texture2D" uid="uid://ce17bhtm6ydd7" path="res://Assets/Sprites/Lexi_Sprite.png" id="5_4h2t5"]
+[ext_resource type="Texture2D" uid="uid://dnpmiw8n2bpf8" path="res://Assets/Sprites/PokemonLike.png" id="1_o1mar"]
+[ext_resource type="PackedScene" uid="uid://dxjeci6g50e7o" path="res://Nodes/Map Objects/travel_point.tscn" id="3_ll3ym"]
+[ext_resource type="PackedScene" uid="uid://ceffltnbwgmos" path="res://Nodes/Map Objects/unpassable.tscn" id="4_km3il"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tcgf3"]
-texture = ExtResource("1_1kwga")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_og3cf"]
+texture = ExtResource("1_o1mar")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -878,42 +876,47 @@ texture = ExtResource("1_1kwga")
 27:39/0 = 0
 28:39/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_ja7vx"]
-sources/0 = SubResource("TileSetAtlasSource_tcgf3")
+[sub_resource type="TileSet" id="TileSet_iywgd"]
+sources/0 = SubResource("TileSetAtlasSource_og3cf")
 
-[node name="house_2_inside" type="Node2D" unique_id=1941216308]
+[node name="House1Inside" type="Node2D" unique_id=695794663]
 
-[node name="TileMap" type="TileMap" parent="." unique_id=941480823]
-tile_set = SubResource("TileSet_ja7vx")
+[node name="TileMap" type="TileMap" parent="." unique_id=232331642]
+tile_set = SubResource("TileSet_iywgd")
 format = 2
-layer_0/tile_data = PackedInt32Array(3211315, 1179648, 28, 3211316, 1245184, 29, 3211317, 1179648, 28, 3211318, 1179648, 28, 3211319, 1179648, 28, 3211320, 1179648, 28, 3211321, 1179648, 28, 3211322, 1179648, 28, 3211323, 1179648, 28, 3211324, 1179648, 28, 3211314, 1179648, 28, 3211313, 1376256, 28, 3211312, 1179648, 28, 3145777, 1376256, 27, 2818096, 1245184, 25, 2818097, 1245184, 25, 2818098, 1245184, 25, 2818099, 1245184, 25, 2818100, 1245184, 25, 2818101, 1245184, 25, 2818102, 1245184, 25, 2818103, 1245184, 25, 2818104, 1245184, 25, 2818105, 1048576, 25, 2818106, 1114112, 25, 2818107, 1245184, 25, 2818108, 1245184, 25, 2883632, 1179648, 28, 2949168, 1179648, 28, 3014704, 1179648, 28, 3080240, 983040, 28, 3145776, 1179648, 28, 2883633, 1376256, 25, 2949169, 1376256, 26, 3014705, 1310720, 27, 3080241, 1048576, 28, 2883635, 1179648, 26, 2883636, 1245184, 26, 2883637, 1310720, 26, 2949172, 1245184, 27, 2949171, 1179648, 27, 2949173, 1310720, 27, 2883634, 1179648, 27, 2949170, 1179648, 27, 3014706, 1179648, 27, 3080242, 1179648, 27, 3145778, 1179648, 27, 3014707, 1310720, 27, 3080243, 1310720, 27, 3145779, 1310720, 27, 3145780, 1310720, 27, 3080244, 1310720, 27, 3014708, 1310720, 27, 3014709, 1310720, 27, 3080245, 1310720, 27, 3145781, 1310720, 27, 2883642, 1114112, 26, 2883641, 1048576, 26, 2883643, 1179648, 28, 2883644, 1179648, 28, 2949180, 983040, 26, 3014716, 983040, 27, 3014715, 1114112, 27, 3014714, 1048576, 27, 3080252, 1310720, 28, 3145788, 1310720, 28, 3145787, 1310720, 28, 3080251, 1310720, 28, 3080250, 1310720, 28, 3145786, 1310720, 28, 3145785, 1310720, 28, 3145784, 1310720, 28, 3145783, 1310720, 28, 3145782, 1310720, 28, 3080246, 1310720, 28, 3080247, 1310720, 28, 3080248, 1310720, 28, 3080249, 1310720, 28, 3014712, 1310720, 28, 3014711, 1310720, 28, 3014710, 1310720, 28, 2949174, 1310720, 28, 2883638, 1310720, 28, 2883639, 1310720, 28, 2883640, 1310720, 28, 2949176, 1310720, 28, 2949175, 1310720, 28, 3014713, 1310720, 28, 2949177, 1310720, 28, 2949178, 1310720, 28, 2949179, 1310720, 28)
+layer_0/tile_data = PackedInt32Array(262162, 1114112, 25, 327698, 1114112, 26, 393234, 1179648, 28, 458770, 1179648, 27, 524306, 1179648, 27, 589842, 1179648, 27, 655378, 1179648, 27, 262163, 1245184, 25, 327699, 1179648, 28, 393235, 1179648, 28, 458771, 1179648, 27, 524307, 1179648, 27, 589843, 1179648, 27, 655379, 1179648, 27, 262164, 1245184, 25, 327700, 1179648, 28, 393236, 1179648, 28, 458772, 1179648, 27, 524308, 1179648, 27, 589844, 1179648, 27, 655380, 1179648, 28, 262165, 1245184, 25, 327701, 1179648, 28, 393237, 1179648, 28, 458773, 1179648, 27, 524309, 1179648, 27, 589845, 1245184, 28, 655381, 1179648, 28, 262166, 1310720, 25, 327702, 1179648, 26, 393238, 1179648, 27, 458774, 1179648, 27, 524310, 1179648, 27, 589846, 1310720, 28, 655382, 1310720, 28, 262167, 1310720, 25, 327703, 1245184, 26, 393239, 1245184, 27, 458775, 1179648, 27, 524311, 1179648, 27, 589847, 1179648, 27, 655383, 1245184, 29, 262168, 1310720, 25, 327704, 1310720, 26, 393240, 1179648, 27, 458776, 1179648, 27, 524312, 1179648, 27, 589848, 1179648, 27, 655384, 1310720, 28, 262169, 1310720, 25, 327705, 1310720, 28, 393241, 1179648, 27, 458777, 1179648, 27, 524313, 1179648, 27, 589849, 1179648, 27, 655385, 1310720, 28, 262170, 1310720, 25, 327706, 1376256, 25, 393242, 1376256, 26, 458778, 1310720, 28, 524314, 1310720, 28, 589850, 1376256, 27, 655386, 1376256, 28, 262171, 1310720, 25, 327707, 1310720, 28, 393243, 1310720, 28, 458779, 1310720, 28, 524315, 1310720, 28, 589851, 1310720, 28, 655387, 1310720, 28, 262159, 983040, 25, 327695, 1310720, 28, 393231, 983040, 26, 458767, 983040, 27, 524303, 1310720, 28, 589839, 983040, 28, 655375, 1310720, 28, 262160, 983040, 25, 327696, 1179648, 28, 393232, 1179648, 28, 458768, 1048576, 27, 524304, 1114112, 28, 589840, 1048576, 28, 655376, 1310720, 28, 262161, 1048576, 25, 327697, 1048576, 26, 393233, 1179648, 28, 458769, 1114112, 27, 524305, 1179648, 27, 589841, 1179648, 27, 655377, 1179648, 27)
 
-[node name="Node2D" parent="." unique_id=1213762246 instance=ExtResource("2_tcgf3")]
-position = Vector2(759, 747)
-scale = Vector2(1, 7.08)
+[node name="Node2D" parent="." unique_id=1213762246 instance=ExtResource("4_km3il")]
+position = Vector2(337, 57)
+scale = Vector2(12.48, 1)
 
-[node name="Node2D2" parent="." unique_id=1045313798 instance=ExtResource("2_tcgf3")]
-position = Vector2(985, 747)
-scale = Vector2(1, 7.08)
+[node name="Node2D2" parent="." unique_id=871670583 instance=ExtResource("4_km3il")]
+position = Vector2(272, 179)
+scale = Vector2(8.679999, 0.5775426)
 
-[node name="Node2D3" parent="." unique_id=764613319 instance=ExtResource("2_tcgf3")]
-position = Vector2(927.9999, 805)
+[node name="Node2D3" parent="." unique_id=1289574338 instance=ExtResource("4_km3il")]
+position = Vector2(478, 179.00002)
+scale = Vector2(8.679999, 0.5775426)
+
+[node name="Node2D4" parent="." unique_id=575855117 instance=ExtResource("4_km3il")]
+position = Vector2(451, 133.99998)
 rotation = 1.5707964
-scale = Vector2(1, 7.08)
+scale = Vector2(8.679999, 0.5775426)
 
-[node name="Node2D4" parent="." unique_id=1053612294 instance=ExtResource("2_tcgf3")]
-position = Vector2(752.9999, 805)
+[node name="Node2D5" parent="." unique_id=424082915 instance=ExtResource("4_km3il")]
+position = Vector2(237.00002, 131)
 rotation = 1.5707964
-scale = Vector2(1, 7.08)
+scale = Vector2(8.679999, 0.5775426)
 
-[node name="Node2D5" parent="." unique_id=1208243988 instance=ExtResource("2_tcgf3")]
-position = Vector2(872.00006, 683)
-rotation = 1.5707964
-scale = Vector2(1, 11.440004)
+[node name="TravelPoint" parent="." unique_id=434239583 instance=ExtResource("3_ll3ym")]
+position = Vector2(376, 186)
+scale = Vector2(2.3589845, 1)
+components = Dictionary[String, Variant]({
+"travel-no_set_pos": false,
+"travel-return": true
+})
+activate_on_touch = true
 
-[node name="Iris" parent="." unique_id=1921743484 instance=ExtResource("3_ja7vx")]
-position = Vector2(841, 785)
-
-[node name="NPC" parent="." unique_id=2115791530 instance=ExtResource("4_dcund")]
-position = Vector2(904, 737)
-texture = ExtResource("5_4h2t5")
+[node name="Spawn" type="Node2D" parent="." unique_id=1490349260]
+unique_name_in_owner = true
+position = Vector2(376, 153)

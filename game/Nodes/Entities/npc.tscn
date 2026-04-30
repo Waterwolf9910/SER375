@@ -8,7 +8,6 @@
 [node name="NPC" type="Sprite2D" unique_id=2115791530]
 texture = ExtResource("1_w8j7k")
 script = ExtResource("2_xjkt7")
-metadata/_edit_lock_ = true
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1710233029]
 

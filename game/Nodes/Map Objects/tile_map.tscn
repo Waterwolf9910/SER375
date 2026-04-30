@@ -1,40 +1,33 @@
 [gd_scene format=3 uid="uid://dbhypqxgkw3cr"]
 
-[ext_resource type="TileSet" uid="uid://c2o5jadxwnyo0" path="res://Resources/tile_set.tres" id="1_sjgmm"]
+[ext_resource type="TileSet" uid="uid://47vac5ar3mcn" path="res://Resources/tile_set.tres" id="1_sjgmm"]
 
 [node name="TileMap" type="Node2D" unique_id=2112434230]
 
 [node name="Background 1" type="TileMapLayer" parent="." unique_id=1634267570]
 use_parent_material = true
-position = Vector2(0, -3)
 tile_set = ExtResource("1_sjgmm")
 
 [node name="Background 2" type="TileMapLayer" parent="." unique_id=1601899378]
 use_parent_material = true
-position = Vector2(0, -3)
 tile_set = ExtResource("1_sjgmm")
 
 [node name="Base 1" type="TileMapLayer" parent="." unique_id=1328086222]
 use_parent_material = true
-position = Vector2(0, -3)
 tile_set = ExtResource("1_sjgmm")
 
 [node name="Fluids" type="TileMapLayer" parent="." unique_id=1021381239]
 use_parent_material = true
-position = Vector2(0, -3)
 tile_set = ExtResource("1_sjgmm")
 
 [node name="Base 2" type="TileMapLayer" parent="." unique_id=401837842]
 use_parent_material = true
-position = Vector2(0, -3)
 tile_set = ExtResource("1_sjgmm")
 
 [node name="Forground 1" type="TileMapLayer" parent="." unique_id=1022867084]
 use_parent_material = true
-position = Vector2(0, -3)
 tile_set = ExtResource("1_sjgmm")
 
 [node name="Forground 2" type="TileMapLayer" parent="." unique_id=826222327]
 use_parent_material = true
-position = Vector2(0, -3)
 tile_set = ExtResource("1_sjgmm")

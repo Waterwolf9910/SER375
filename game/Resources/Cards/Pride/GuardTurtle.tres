@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="Card" format=3 uid="uid://bmtxblbc5unln"]
 
 [ext_resource type="Script" uid="uid://desxxqjimgrh2" path="res://Scripts/Gameplay/CardEffects/CardEffect.cs" id="1_s5f4v"]
+[ext_resource type="Texture2D" uid="uid://c3i7hu5evrk28" path="res://Assets/Cards/Card Name_ Guard Turtle - Guard Table Only - Card Type_ Pride.png" id="2_4f71s"]
 [ext_resource type="Script" uid="uid://cb5fejxbatbuj" path="res://Scripts/Resources/Card.cs" id="2_aistb"]
 
 [sub_resource type="Texture2D" id="Texture2D_4f71s"]
@@ -23,6 +24,15 @@ element = 16
 metadata/_custom_type_script = "uid://desxxqjimgrh2"
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kl28i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4f71s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [resource]
 script = ExtResource("2_aistb")

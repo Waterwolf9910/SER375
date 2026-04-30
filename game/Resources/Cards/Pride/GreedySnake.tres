@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://desxxqjimgrh2" path="res://Scripts/Gameplay/CardEffects/CardEffect.cs" id="1_3uimo"]
 [ext_resource type="Script" uid="uid://cb5fejxbatbuj" path="res://Scripts/Resources/Card.cs" id="2_xbusu"]
+[ext_resource type="Texture2D" uid="uid://71pthnl7mx27" path="res://Assets/Cards/Card Name_ Greedy Snake - Greedy Snake Only - Card Type_ Pride.png" id="2_xgblp"]
 
 [sub_resource type="Texture2D" id="Texture2D_xgblp"]
 resource_local_to_scene = false
@@ -14,6 +15,15 @@ element = 16
 metadata/_custom_type_script = "uid://desxxqjimgrh2"
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gvgdy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xgblp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [resource]
 script = ExtResource("2_xbusu")
